@@ -11,4 +11,4 @@ Le varie componenti del servizio che si sta costruendo sono accessibili all'indi
 * STIX/TAXII \[TODO\]
 * testo \[TODO\]
 
-La guida all'installazione del server è [disponibile qui](INSTALL - Server software.md)
+La guida all'installazione del server è [disponibile qui](INSTALL-Server_software.md)
