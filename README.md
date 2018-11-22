@@ -8,7 +8,7 @@ L'obiettivo è quello di creare una community italiana che funzioni da collettor
 Come punto di partenza è stata integrata la piattaforma [InfoSec del CERT-PA](https://infosec.cert-pa.it) da cui si raccolgono  IoC (Indicator of Compromise) del tipo IP, domini, URL.
 
 Le varie componenti del servizio che si sta costruendo sono accessibili all'indirizzo https://infosharing.cybersaiyan.it ed al momento includono l'export degli IoC nei seguenti formati
-* STIX/TAXII \[TODO\]
-* testo \[TODO\]
+* [STIX/TAXII](IoC-STIX_TAXII.md)
+* [testo](IoC-text.md)
 
 La guida all'installazione del server è [disponibile qui](INSTALL-Server_software.md)
