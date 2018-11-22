@@ -12,3 +12,6 @@ Le varie componenti del servizio che si sta costruendo sono accessibili all'indi
 * [testo](IoC-text.md)
 
 La guida all'installazione del server è [disponibile qui](INSTALL-Server_software.md)
+### Community
+Il progetto è un'iniziativa volontaria portata avanti dalla community di Cyber Saiyan.
+E' stato creato un [gruppo Telegram](https://t.me/joinchat/Av4DDFjVkRC60YH_Lq-WVw) per coordinare l'evoluzione del progetto
