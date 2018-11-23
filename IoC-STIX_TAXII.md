@@ -93,9 +93,10 @@ lista degli IoC in formato STIX 1.2 (XML)
 
 ### Formato di un generico IoC
 Di seguito il formato di un generico IoC; i campi principali sono 
-* indicator:Title ==> questo deve definire univocamente la minaccia
-* indicator:Description ==> descrizione della minaccia/indicatore 
-* indicator:Observable ==> in questa sezione sono specificati gli IoC (più di uno anche) associati alla minaccia
+* _indicator:Title_ ==> questo deve definire univocamente la minaccia
+* _indicator:Description_ ==> descrizione della minaccia/indicatore 
+* _indicator:Observable_ ==> in questa sezione sono specificati gli IoC (più di uno anche) associati alla minaccia
+
 E' importante evidenziare che  ci sono anche altri field interessanti che non sono presenti in questi indicatori perchè sono collezionati da file CSV sul sito del CERT-PA
 ```
     <stix:STIX_Header>
