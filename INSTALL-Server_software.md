@@ -12,8 +12,11 @@ sudo apt install nginx
 NGINX è il reverse proxy che utilizza Minemeld per erogare il servizio
 
 ### Minemeld
-[Minemeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld) è il software utilizzato per collezionare IoC da fonti esterne e ripubblicare questi Ioc (normalizzati, deduplicati e storicizzati) in vari formati
-Seguire la guida disponibile [a questo indirizzo](https://github.com/PaloAltoNetworks/minemeld-ansible#howto-on-ubuntu-1604) di cui si riportano di seguito i passi essenziali
+[Minemeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld) è il software utilizzato per collezionare IoC da fonti esterne e ripubblicare questi Ioc (normalizzati, deduplicati e storicizzati) in vari formati (STIX/TAXII e testo).
+
+La guida ufficiale all'installazione di Minemeld è disponibile [a questo indirizzo](https://github.com/PaloAltoNetworks/minemeld-ansible#howto-on-ubuntu-1604).
+
+Di seguito tutti gli step di installazione contestualizzati allo scenario in via di sperimentazione.
 ```
 sudo apt-get update
 sudo apt-get upgrade
@@ -28,14 +31,15 @@ git clone https://github.com/PaloAltoNetworks/minemeld-ansible.git
 cd minemeld-ansible
 ansible-playbook -K -e "minemeld_version=master" -i 127.0.0.1, local.yml
 ```
-e verificare lo stato del servizio
+Verificare lo stato del servizio.
 ```
 sudo service minemeld status
 ```
-
-Minemeld "modifica" la configurazione del default site di NGINX e crea un nuovo site _minemeld-web_ 
-file: _/etc/nginx/sites-enabled/minemeld-web_
+Minemeld cambia la configurazione del _default_ site di NGINX e crea il nuovo site _minemeld-web_ 
 ```
+##############################################
+# file: /etc/nginx/sites-enabled/minemeld-web
+
 upstream app_server {
     server 127.0.0.1:5000 fail_timeout=0;
 }
@@ -104,7 +108,42 @@ server {
     }
 }
 ```
-Da questo momento Minemeld è giù up&running ed è accessibile all'indirizzo locale della macchina (utenza default admin/minemeld)
+Da questo momento Minemeld è up&running ed accessibile all'indirizzo locale della macchina (utenza default admin/minemeld) e pronto per essere configurato.
 
-**[TODO]**
-HARDENING NGINX PER ESPOSIZIONE SERVIZIO SU INTERNET
+### OpenTAXII
+Il server OpenTAXII è utilizzato per consentire alla community il **PUSH degli IoC** e quindi va ad implemetare i meccanismi di **contribuzione**; gli IoC _pushati_ saranno poi ripubblicati in formato STIX/TAXII e testo via Minemeld, secondo le logiche e le regole che saranno poi definite.
+
+La guida ufficiale all'installazione di OpenTAXII è consultabile [qui](http://www.opentaxii.org/en/stable/installation.html) e [qui](http://www.opentaxii.org/en/stable/configuration.html).
+
+Di seguito tutti gli step di installazione contestualizzati allo scenario in via di sperimentazione.
+```
+###############################################################
+# tutti i comandi eseguiti si intendo eseguiti come utente root
+
+apt install libxml2 libxml2-dev python-pip python-dev libxslt1-dev zlib1g-dev
+pip install opentaxii
+
+# altri pip packages necessari
+pip install click jinja2 werkzeug itsdangerous python-dateutil lxml mysqlclient
+```
+Verificare la versione OpenTAXII installata; la versione 0.1.10 è quella testata e funzionante
+```
+pip list | grep ^openta
+```
+Di default OpenTAXII utilizza SQLite come backend. Nel nostro scenario usiamo mysql; durante l'installazione andremo ad impostare user e passwrd per l'utenza _root_
+```
+apt install mysql-server libmysqlclient-dev
+```
+Connettendosi con l'utenza _root_ 
+```
+mysql -u root -p
+```
+si va a creare l'utenza di servizio _taxii_ a cui si assegnano i permessi sui db di servizio _taxiiauth_ e _taxiipersist_
+```
+create database taxiiauth;
+create database taxiipersist;
+grant all on taxiiauth.* to 'taxii'@'%' identified by '<MYSQL_TAXII_PWD>';
+grant all on taxiipersist.* to 'taxii'@'%' identified by '<MYSQL_TAXII_PWD>';
+quit
+```
+Il server OpenTAXII è pronto per essere configurato.
