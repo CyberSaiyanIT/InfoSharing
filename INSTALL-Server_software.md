@@ -126,7 +126,7 @@ pip install opentaxii
 # altri pip packages necessari
 pip install click jinja2 werkzeug itsdangerous python-dateutil lxml mysqlclient
 ```
-Verificare la versione OpenTAXII installata; la versione 0.1.10 è quella testata e funzionante
+Verificare la versione OpenTAXII installata; la [versione 0.1.10](http://www.opentaxii.org/en/stable/changes.html) è quella testata e funzionante
 ```
 pip list | grep ^openta
 ```
