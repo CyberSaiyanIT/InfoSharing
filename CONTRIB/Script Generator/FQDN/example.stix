@@ -1,0 +1,519 @@
+<stix:STIX_Package
+        xmlns:stix="http://stix.mitre.org/stix-1"
+        xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1"
+        xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1"
+        xmlns:cybox="http://cybox.mitre.org/cybox-2"
+        xmlns:myNS="http://MY-NAMESPACE.com"
+        xmlns:indicator="http://stix.mitre.org/Indicator-2"
+        xmlns:marking="http://data-marking.mitre.org/Marking-1"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:stixCommon="http://stix.mitre.org/common-1"
+        xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2"
+        xmlns:cyboxCommon="http://cybox.mitre.org/common-2"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+         id="myNS:Package-7d7c1019-09ab-499f-b83b-3fd835d862f0" version="1.2">
+    <stix:STIX_Header>
+        <stix:Title>TEST</stix:Title>
+        <stix:Description>Test Infosharing</stix:Description>
+        <stix:Short_Description>2018-11-27 09:29:08</stix:Short_Description>
+        <stix:Handling>
+            <marking:Marking>
+                <marking:Controlled_Structure>//node() | //@*</marking:Controlled_Structure>
+                <marking:Marking_Structure xsi:type='tlpMarking:TLPMarkingStructureType' color="GREEN"/>
+            </marking:Marking>
+        </stix:Handling>
+        <stix:Information_Source>
+            <stixCommon:Identity>
+                <stixCommon:Name>IDENTITY</stixCommon:Name>
+            </stixCommon:Identity>
+        </stix:Information_Source>
+    </stix:STIX_Header>
+    <stix:Indicators>
+        <stix:Indicator id="myNS:indicator-24c1791d-2beb-480e-bf2a-b16b6bc28377" timestamp="2018-11-27T08:29:08.914294+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>TEST</indicator:Title>
+            <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+            <indicator:Observable id="myNS:Observable-c73f7b1e-9321-466d-a739-e263352c4005">
+                <cybox:Observable_Composition operator="OR">
+                    <cybox:Observable id="myNS:Observable-3d9709c8-0b01-4c9c-b1ff-ec760cd3dc7b">
+                        <cybox:Object id="myNS:URI-9e52dea1-03b0-4794-afdb-a773d1da7889">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>niarhoslondon.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-653d4a56-65c4-458d-ba78-7b1885ea585d">
+                        <cybox:Object id="myNS:URI-e5962c8e-469d-44eb-bcee-bc0633400839">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>cdvdautomator.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-6b5b37d3-be26-4629-8dd6-6385a1b5ac64">
+                        <cybox:Object id="myNS:URI-4edcb3a5-d944-48f1-a0f7-a85ea67f74d5">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>snapshotsandwhatnots.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-2d1f80cb-09e7-44f5-8891-01a52652b73e">
+                        <cybox:Object id="myNS:URI-576a43cc-d862-4a9d-9b46-620fc11dff3a">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>comedyyall.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-4e76099f-66e1-4797-94e7-01e6cfe283df">
+                        <cybox:Object id="myNS:URI-f172404b-3f68-4182-b770-b9f807d2cd65">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>mark.k9redemptionrescue.org</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-c67b9ba2-539f-483c-92fc-1fadc156ac52">
+                        <cybox:Object id="myNS:URI-c7a69ab0-41c0-4aec-af8e-a19ea036f780">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>vovachka.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-404e1b0b-93a1-46b9-be9a-dec9d89bd8ef">
+                        <cybox:Object id="myNS:URI-1438ee29-ccf1-48fe-8f7c-e50a41dd4bbe">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>cloudblueprintprogram.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-2a3b1314-d2f7-445e-b3d9-c30c7f8d1b9b">
+                        <cybox:Object id="myNS:URI-644ed9a6-3dd4-4dcb-af2b-3fa83a027e9a">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>hollywoodisruption.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-f7e74024-8893-4ede-bff8-b918817dbac0">
+                        <cybox:Object id="myNS:URI-b0ad3d75-ff23-4694-ad34-b317e25d69e3">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>cnchalftone.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-640f1532-e3e9-4545-934b-fea967a2e167">
+                        <cybox:Object id="myNS:URI-7949234e-35ac-4d5e-b242-e9efaa2d8de7">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>rocketpak.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-51a86a0b-d9fe-493f-bd51-835b1f8bef47">
+                        <cybox:Object id="myNS:URI-ac5eb2db-73bd-4777-9b44-fc59f3dfb549">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>synchronr.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-b65c4f7e-7722-4942-ad30-8189ea01ed41">
+                        <cybox:Object id="myNS:URI-ffb8dfc3-6f70-4406-b949-9036da2df85b">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>snotterkind.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-185c3e0f-2069-45cb-ae41-562a1246ce93">
+                        <cybox:Object id="myNS:URI-fee5cd16-594d-4321-a353-65afca0d47ea">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>zefeed.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-5fbba3e9-23f2-42b1-877b-bcbb7d8f3767">
+                        <cybox:Object id="myNS:URI-accaeb75-ceec-4578-8dc5-281c9fefe6d1">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>tuftandneedles.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-abfcd323-515a-4acf-9684-fa67860afed4">
+                        <cybox:Object id="myNS:URI-609b1d29-08e7-4bea-8a7b-84fbae98a437">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>sip3.propertiesandprojects.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-baf3c561-f46b-4d4c-bc5b-11b37d97896a">
+                        <cybox:Object id="myNS:URI-3f6d7c71-88d4-4f73-bf39-ab843a4de274">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>zayantetinyhomes.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-88e279dc-c1a5-4c54-8599-6a1b66519332">
+                        <cybox:Object id="myNS:URI-2296f04e-994f-4734-ab74-bd188e92b5b8">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>ssl.vci-cfo.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-f1587f04-9b18-41e0-b6b9-162d3dcdc5d2">
+                        <cybox:Object id="myNS:URI-7cffad9b-a688-47a4-81c8-70f8d18beba0">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>ns15.dreamsinthesun.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-efd628ba-b9a4-4be7-b200-41dfdb2a4128">
+                        <cybox:Object id="myNS:URI-39ba270b-924c-4d62-ab39-6790404d0fb0">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>thejourneytogodsheart.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-3fe378f5-1b15-4307-9e7a-97602d304e9f">
+                        <cybox:Object id="myNS:URI-c3981ce2-3abe-422f-9f6a-2a8ba3e25472">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>terento.website</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-e27b85cc-77fd-4066-9b3d-782019bb5ccc">
+                        <cybox:Object id="myNS:URI-2db2032f-cc2f-456c-b348-7538af6f4103">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>healingfoodconsulting.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-7d4f7cef-1230-4980-a1a2-583155b3073d">
+                        <cybox:Object id="myNS:URI-5f8dcb75-5def-4737-a5a7-b11b8654effe">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>host1.jodiray.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-13067e91-a069-4fd8-928f-045ba4412c4a">
+                        <cybox:Object id="myNS:URI-89f8ad38-dedf-47bd-bba6-e174491a055e">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>theargumint.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-ec53f2e2-f7d2-42f6-a70f-a34dc3ce5525">
+                        <cybox:Object id="myNS:URI-1b641b4b-0e80-414b-a09c-996ec1d845c6">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>185.44.105.97</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-914d0040-82f7-4947-958f-157778c57205">
+                        <cybox:Object id="myNS:URI-1e25c91b-4e33-4660-8a75-8956f4a76a14">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>grkisland.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-8fee412d-3fc4-4b81-9bfb-166cbc08851c">
+                        <cybox:Object id="myNS:URI-9a76eed9-35bf-485c-beb8-de2d105e090b">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>thesaltybody.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-6c0c7355-6487-4862-8a66-fb18859e9210">
+                        <cybox:Object id="myNS:URI-b38b90b3-ca30-4cbd-a530-6616569d976a">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>home-sphere.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-db9b07f1-22b9-458d-a005-fa4d4190145e">
+                        <cybox:Object id="myNS:URI-55f7a631-ad98-4a9b-a4fe-2e0c1e7af132">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>war-arena.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-95bb50ef-09a7-4639-bc46-db44b1ee3774">
+                        <cybox:Object id="myNS:URI-547b9b55-f802-49bd-b9fc-dea7ecaf3eb3">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>kylesinger.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-94cdc899-c358-4a5c-9023-6fc2ea9e59ea">
+                        <cybox:Object id="myNS:URI-95b271ee-ff95-4fd7-93ed-ea07e3fd2252">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>dvoper.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-516bbf3c-94e1-4a7d-9f1c-bbeb6286f24f">
+                        <cybox:Object id="myNS:URI-e6609fb4-89d7-453e-8fc3-6e4e20c4fde3">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>muiienweg.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-0c9a38d3-2d39-43d4-b8c4-7c32db156e29">
+                        <cybox:Object id="myNS:URI-c04360c6-3d80-4675-82e4-c91e4c1f5567">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>cerera.survivalbid.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-d9755148-86b2-4090-a110-42090e3ed16f">
+                        <cybox:Object id="myNS:URI-b12b2bdd-6b49-4a74-bf75-d8f25305f1c9">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>silkygames.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-2b93edd4-418a-4bfb-9d1f-c76aba3a7e4d">
+                        <cybox:Object id="myNS:URI-b63da7ae-2396-4c32-b2ad-d9cdd4b356da">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>at.moonbeammagic.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-a9a8897c-2349-42fe-984b-1a451107c0ba">
+                        <cybox:Object id="myNS:URI-706e1c23-674b-4bb8-8eb8-b5334c70f217">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>239outdoors.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-4f8de0b4-a8ef-408d-890e-b10e641a7db2">
+                        <cybox:Object id="myNS:URI-074b9b29-bf1f-4e4f-b14f-a09b8373b8da">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>evelynleekley.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-65a98e3f-7d8d-426d-80bd-a07a2b7f432f">
+                        <cybox:Object id="myNS:URI-f21a95c4-4e8a-4157-af14-335116b3006d">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>z1logistics.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-eac42511-98fa-4fef-b55b-ef009ca9e0f5">
+                        <cybox:Object id="myNS:URI-b27485dd-f818-4b76-8393-09f7cde4ebf5">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>ericandchrissy.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-93b52bbe-6384-4aa2-969e-074c2c0ba2c6">
+                        <cybox:Object id="myNS:URI-be244903-9910-4323-a703-2213778b2d0a">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>wall-runners.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-d63ad8ee-ec5b-4db1-940b-e3179cbc0871">
+                        <cybox:Object id="myNS:URI-eafb8379-a218-43c1-b5ba-6b9cde8349c9">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>www.scottishwindowsolutions.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-ed46a53b-a717-48f5-aedd-d8b99bbe85a6">
+                        <cybox:Object id="myNS:URI-76fdd6c1-b133-4c7b-aced-c06460a0ca88">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>strangerthanchristmas.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-b89ead00-f152-458c-86a0-d7780bbec52f">
+                        <cybox:Object id="myNS:URI-f1228a0c-6b21-434f-bee8-eda0562613ad">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>solespin.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-9dcd2b94-4119-40fb-8879-ab282edbba96">
+                        <cybox:Object id="myNS:URI-a94629aa-9853-4f4d-bdf5-4f0174db0b78">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>microtiasurgery.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-4ee6f90d-795d-431f-a950-47737d212ed7">
+                        <cybox:Object id="myNS:URI-8a6e8379-10b4-49b5-8afd-c958f065b9af">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>menshoesonlinestore.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-1541399e-9a08-4973-b579-1cd330851cd4">
+                        <cybox:Object id="myNS:URI-b68f818e-4171-4cd2-87c9-6568ee9d2b4c">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>scottishwindowsolutions.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-39bf4187-6014-42ff-8052-65276ceffa36">
+                        <cybox:Object id="myNS:URI-1ecde0b9-ea6a-469f-b8d0-38abfb15f9f4">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>api.hailstorm360.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-9a61f2ee-8b46-481b-bd45-9817df8fe8c5">
+                        <cybox:Object id="myNS:URI-c9f61525-8ece-4b9c-97b7-0cbef787f812">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>note.lawrencechoy.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-ed1ba370-7bc4-4353-9a9a-3d569858276d">
+                        <cybox:Object id="myNS:URI-6ebc55db-7fee-49f9-b25c-d4f83b6259a6">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>bdi2.nomadicdecorator.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-055ea725-b192-483b-b414-1ab0aad4286f">
+                        <cybox:Object id="myNS:URI-c8ef22c8-28a6-4009-9b34-553d2d727288">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>opsantorinitours.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-04749dc0-2d38-4c7e-b728-28d76d32ffaa">
+                        <cybox:Object id="myNS:URI-6f524216-769f-44fb-aca5-a94459034cd7">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>integrativenutritiontherapy.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-267087d7-b330-4a55-865a-f3bf5de4ef5d">
+                        <cybox:Object id="myNS:URI-32442753-d4a4-4995-9df8-15c4776c7359">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>conticellolaw.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-d4126c1f-577d-4cab-8c09-0afef6551e61">
+                        <cybox:Object id="myNS:URI-5d3710a0-d53d-4ffd-ab85-90572936cf46">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>movielotbar.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-23bfaf1e-ea7b-4a66-90af-a30540c6292c">
+                        <cybox:Object id="myNS:URI-fbec36f0-5ecf-4424-ba11-72c63e0f403f">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>videospanishlessons.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-20e50537-78a5-4517-abfc-f99c6f4af2cc">
+                        <cybox:Object id="myNS:URI-97080d90-cdd4-406e-bb4b-0705472cc1bb">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>progunjobs.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-18ac488c-5d24-48a5-89ea-44904dd6c0d7">
+                        <cybox:Object id="myNS:URI-f4dc578f-f74f-42b5-954d-0ceccff8141e">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>bentlabel.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-bdf806b4-9f6b-4e8d-8801-2c7046ef5f96">
+                        <cybox:Object id="myNS:URI-4f3d7bfd-8292-48d2-b69d-4151f81e28ec">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>topsantorinitours.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-f5952582-6c1a-4ddd-93c8-5e90ece88c5b">
+                        <cybox:Object id="myNS:URI-5e7cbf3c-43f5-46a0-9b7c-ae6f163e927d">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>thegildedwren.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-3866d350-5b8f-4332-9370-619e1fe1091e">
+                        <cybox:Object id="myNS:URI-42f92e93-2f6d-45e5-ad36-a1d3562f0e36">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>flaveme.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-cb82c2fa-e094-4aba-843d-312a46fccf5e">
+                        <cybox:Object id="myNS:URI-ae3d67fa-c87f-4a85-b022-e059f5bf5536">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>nsc.dayswithsunrays.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-3160ddb2-ea46-4b49-ba8a-8cad29a5d8f8">
+                        <cybox:Object id="myNS:URI-4c263445-c261-4efa-8573-bc1d07f8ca93">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>legionchristmas.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-4565fbac-04fb-43a7-91f5-f412fccb7acc">
+                        <cybox:Object id="myNS:URI-590d13fa-5a1c-44a7-8a91-4f00cbf3b75a">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>equinnex.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-8c3b326f-97eb-4b85-8731-5ed6c65039de">
+                        <cybox:Object id="myNS:URI-86a557ad-cb7f-46e7-bc9c-fd4e6a717016">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>hertzsynergy.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-8808eceb-44b3-4850-9fd5-8af4afb4c6d6">
+                        <cybox:Object id="myNS:URI-7c8881b9-05bc-4a6b-84f8-ba374e01106e">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>kineloveclips.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-e6b6a1e4-9199-4a56-9318-c8beccf84309">
+                        <cybox:Object id="myNS:URI-2a2b04de-9f3e-427f-9686-20272aeb300b">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>taramadden.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-72d356a9-0d87-43e0-834b-351cf0b264e2">
+                        <cybox:Object id="myNS:URI-95ceaab3-e48b-4046-b490-bdc26e54ed2d">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>expungementstennessee.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-195dbdad-a5d0-44a6-8d03-a8a4a766c844">
+                        <cybox:Object id="myNS:URI-dac0c258-dca5-4582-bc5d-400883b7ae32">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>jdkanyuk.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-c96c75d3-74ce-410d-85e8-3682f7d43c01">
+                        <cybox:Object id="myNS:URI-1044f681-8881-417c-85f3-ebd1fc932fa4">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>elis.k9redemptionrescue.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="myNS:Observable-52991cc1-6e66-4eeb-bdeb-74ad12372e86">
+                        <cybox:Object id="myNS:URI-869ac199-8933-42f5-8c3f-092c17eb0fba">
+                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                                <URIObj:Value>couplesdoingbusiness.com</URIObj:Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                </cybox:Observable_Composition>
+            </indicator:Observable>
+        </stix:Indicator>
+    </stix:Indicators>
+</stix:STIX_Package>
