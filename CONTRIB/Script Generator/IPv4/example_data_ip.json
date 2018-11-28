@@ -1,0 +1,12 @@
+{
+"NSXURL": "https://www.URLNS.ltd",
+"NS" : "NSSCELTO",
+"Title": "Titolo UNIVOCO minaccia",
+"Description": "Descrizione qui",
+"Identity": "IDENTITY",
+"TLP_COLOR" : "GREEN",
+"IOC": 	{
+	"185.44.105.97":["f846b2cfa37a5b5e9ea1208b597796fa", "ea2692967c33db5e53abe27a54e0b98b07f33a36"],
+	"185.61.152.71":[]
+	}
+}
