@@ -40,8 +40,9 @@ def main():
     '''
 #    NAMESPACE = {sanitizer(mydata["NSXURL"]) : (mydata["NS"])}
 #    set_id_namespace(NAMESPACE)
-    NAMESPACE = Namespace("http://MY-NAMESPACE.com", "myNS")
+    NAMESPACE = Namespace(sanitizer(mydata['NSXURL']), sanitizer(mydata['NS']))
     set_id_namespace(NAMESPACE) # new ids will be prefixed by "myNS"
+    
     wrapper = STIXPackage()
     info_src = InformationSource()
     info_src.identity = Identity(name=sanitizer(mydata["Identity"]))
