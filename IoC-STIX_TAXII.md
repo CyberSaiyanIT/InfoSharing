@@ -1,6 +1,6 @@
 Per poter recuperare gli IoC in formato STIX è possibile [installare il software Cabby](https://cabby.readthedocs.io/en/stable/installation.html)
 
-Di seguito la procedura testata su Ubuntu >=18.04
+Di seguito la procedura testata su Ubuntu >=16.04
 ```
 sudo apt install virtualenv
 virtualenv cabby
