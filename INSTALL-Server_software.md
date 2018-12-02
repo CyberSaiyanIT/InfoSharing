@@ -146,4 +146,15 @@ grant all on taxiiauth.* to 'taxii'@'%' identified by '<MYSQL_TAXII_PWD>';
 grant all on taxiipersist.* to 'taxii'@'%' identified by '<MYSQL_TAXII_PWD>';
 quit
 ```
+Si va ad alterare la struttura di due campi del DB _taxiipersist_ che ospitano i file STIX che saranno pushati sulla rete; questo perchè il campo BLOB ne limita la dimensione massima a 64KB.
+
+Connettendosi con l'utenza _taxii_ sul DB _taxiipersist_
+```
+`mysql -u taxii -p taxiipersist
+```
+si vanno ad alterare i campi BLOB facendoli diventare LONGBLOB
+```
+ALTER TABLE inbox_messages MODIFY COLUMN original_message LONGBLOB NOT NULL;
+ALTER TABLE content_blocks MODIFY COLUMN content LONGBLOB NOT NULL;
+```
 Il server OpenTAXII è pronto per essere configurato.
