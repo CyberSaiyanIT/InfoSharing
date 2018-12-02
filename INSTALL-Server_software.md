@@ -134,11 +134,16 @@ Di default OpenTAXII utilizza SQLite come backend. Nel nostro scenario usiamo my
 ```
 apt install mysql-server libmysqlclient-dev
 ```
-Connettendosi con l'utenza _root_ 
+E' necessario disabilitare _Strict SQL Mode_ per ovviare ad errori in fase di PUSH degli IoC causati dalla dimensione dei file STIX che si andranno a caricare. Per fare questo seguire la guida presente [a questo indirizzo](https://serverpilot.io/docs/how-to-disable-strict-mode-in-mysql-5-7)
+L'errore che si riscontra non applicando questa configurazione è il seguente
+```
+DataError: (_mysql_exceptions.DataError) (1406, "Data too long for column 'original_message' at row 1") [SQL: u'INSERT INTO inbox_messages (date_created, message_id, result_id, record_count, partial_count, subscription_collection_name, subscription_id, exclusive_begin_timestamp_label, inclusive_end_timestamp_label, original_message, content_block_count, destination_collections, service_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)'] [parameters: ...
+```
+Successivamente ci si connette con l'utenza _root_ 
 ```
 mysql -u root -p
 ```
-si va a creare l'utenza di servizio _taxii_ a cui si assegnano i permessi sui db di servizio _taxiiauth_ e _taxiipersist_
+e si va a creare l'utenza di servizio _taxii_ a cui si assegnano i permessi sui db di servizio _taxiiauth_ e _taxiipersist_
 ```
 create database taxiiauth;
 create database taxiipersist;
