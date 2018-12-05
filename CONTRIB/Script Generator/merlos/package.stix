@@ -1,0 +1,137 @@
+<stix:STIX_Package 
+	xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1"
+	xmlns:stix="http://stix.mitre.org/stix-1"
+	xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2"
+	xmlns:AddressObj="http://cybox.mitre.org/objects#AddressObject-2"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:stixVocabs="http://stix.mitre.org/default_vocabularies-1"
+	xmlns:cybox="http://cybox.mitre.org/cybox-2"
+	xmlns:indicator="http://stix.mitre.org/Indicator-2"
+	xmlns:marking="http://data-marking.mitre.org/Marking-1"
+	xmlns:CYBERSAIYAN="https://infosharing.cybersaiyan.it"
+	xmlns:stixCommon="http://stix.mitre.org/common-1"
+	xmlns:URIObj="http://cybox.mitre.org/objects#URIObject-2"
+	xmlns:cyboxCommon="http://cybox.mitre.org/common-2"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	 id="CYBERSAIYAN:Package-c1950d6c-b655-440b-b9e0-22ca6dc97677" version="1.2">
+    <stix:STIX_Header>
+        <stix:Title>Danabot</stix:Title>
+        <stix:Description>CERT-PA - Campagna di Malspam diffonde il Trojan Danabot anche in Italia - https://www.cert-pa.it/notizie/campagna-di-malspam-diffonde-il-trojan-danabot-anche-in-italia/</stix:Description>
+        <stix:Short_Description>2018-12-05 15:40:59</stix:Short_Description>
+        <stix:Handling>
+            <marking:Marking>
+                <marking:Controlled_Structure>//node() | //@*</marking:Controlled_Structure>
+                <marking:Marking_Structure xsi:type='tlpMarking:TLPMarkingStructureType' color="WHITE"/>
+            </marking:Marking>
+        </stix:Handling>
+        <stix:Information_Source>
+            <stixCommon:Identity>
+                <stixCommon:Name>CyberSaiyan Community</stixCommon:Name>
+            </stixCommon:Identity>
+        </stix:Information_Source>
+    </stix:STIX_Header>
+    <stix:Indicators>
+        <stix:Indicator id="CYBERSAIYAN:indicator-10d69ffc-7389-45ae-bcee-73a6a8850faf" timestamp="2018-12-05T14:40:59.673542+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Danabot - HASH</indicator:Title>
+            <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">File Hash Watchlist</indicator:Type>
+            <indicator:Observable id="CYBERSAIYAN:Observable-4477bb73-80b5-43a4-8e20-3ee8e93d0f7f">
+                <cybox:Observable_Composition operator="OR">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-4a198f3f-ea2f-4838-a384-879f4a6859f7">
+                        <cybox:Object id="CYBERSAIYAN:File-172ddb6b-d709-4734-91b1-9e9dc25a67bf">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>8494954c9393a33a973dd50e7b820148fc82101bb6b42dab659c217c98b4a673</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-744e5479-d566-451e-9360-737bd1b60d74">
+                        <cybox:Object id="CYBERSAIYAN:File-4969ea14-b1e8-4c0b-ab85-eaf013e9c3eb">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>f583ca884c1d93458fb61ed137ff44f6</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-0480b95f-29f3-490a-bf4e-c25441153181">
+                        <cybox:Object id="CYBERSAIYAN:File-f87c9edb-1404-4a77-af7c-3fccd7ce3f99">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>1677a8a787ef98ac55181e19b9fdcc8f1f319207</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                </cybox:Observable_Composition>
+            </indicator:Observable>
+        </stix:Indicator>
+        <stix:Indicator id="CYBERSAIYAN:indicator-c111354b-9246-4d7e-b148-7c15ba61dec1" timestamp="2018-12-05T14:40:59.675843+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Danabot - DOMAIN</indicator:Title>
+            <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
+            <indicator:Observable id="CYBERSAIYAN:Observable-d539477f-11e5-4465-84b5-6f6845684ebf">
+                <cybox:Object id="CYBERSAIYAN:URI-c9f04a0a-64c6-458d-9f75-eafaf3b473c1">
+                    <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
+                        <URIObj:Value>domain.com</URIObj:Value>
+                    </cybox:Properties>
+                </cybox:Object>
+            </indicator:Observable>
+        </stix:Indicator>
+        <stix:Indicator id="CYBERSAIYAN:indicator-d150e247-c83c-47de-a2ee-f02c803eb9c8" timestamp="2018-12-05T14:40:59.676084+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Danabot - URL</indicator:Title>
+            <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
+            <indicator:Observable id="CYBERSAIYAN:Observable-d98207dc-8b9d-4488-b4ac-05d37c18ecec">
+                <cybox:Object id="CYBERSAIYAN:URI-c111b498-8d58-4bed-ad61-782859bda575">
+                    <cybox:Properties xsi:type="URIObj:URIObjectType" type="URL">
+                        <URIObj:Value>http://fake.domain/got.it.exe</URIObj:Value>
+                    </cybox:Properties>
+                </cybox:Object>
+            </indicator:Observable>
+        </stix:Indicator>
+        <stix:Indicator id="CYBERSAIYAN:indicator-3daf7835-714a-485b-be5e-a925da71d9dd" timestamp="2018-12-05T14:40:59.676358+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Danabot - IP</indicator:Title>
+            <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+            <indicator:Observable id="CYBERSAIYAN:Observable-fa291cbb-714c-4e45-8f77-8f02915918fb">
+                <cybox:Object id="CYBERSAIYAN:Address-9ed547ee-55f6-4781-a18f-f1d11385cfb1">
+                    <cybox:Properties xsi:type="AddressObj:AddressObjectType">
+                        <AddressObj:Address_Value>127.0.0.1</AddressObj:Address_Value>
+                    </cybox:Properties>
+                </cybox:Object>
+            </indicator:Observable>
+        </stix:Indicator>
+        <stix:Indicator id="CYBERSAIYAN:indicator-e5fadfcc-56b5-4d93-a0af-049286b3892d" timestamp="2018-12-05T14:40:59.676587+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Danabot - EMAIL</indicator:Title>
+            <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+            <indicator:Observable id="CYBERSAIYAN:Observable-036bd82f-6394-406d-b3e9-2d8bfd275e4a">
+                <cybox:Observable_Composition operator="OR">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-d0309569-4abf-4f45-b31c-0580ec5eca23">
+                        <cybox:Object id="CYBERSAIYAN:EmailAddress-5aaee086-1ad4-4f01-9c5b-a26357f23a6c">
+                            <cybox:Properties xsi:type="AddressObj:AddressObjectType" category="e-mail">
+                                <AddressObj:Address_Value>email@fake.domain</AddressObj:Address_Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-813ca534-a2df-4b1a-b76b-5e58bc45504f">
+                        <cybox:Object id="CYBERSAIYAN:EmailAddress-c057690c-cbef-447e-b2af-7b08e813d755">
+                            <cybox:Properties xsi:type="AddressObj:AddressObjectType" category="e-mail">
+                                <AddressObj:Address_Value>@fake.domain</AddressObj:Address_Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                </cybox:Observable_Composition>
+            </indicator:Observable>
+        </stix:Indicator>
+    </stix:Indicators>
+</stix:STIX_Package>
