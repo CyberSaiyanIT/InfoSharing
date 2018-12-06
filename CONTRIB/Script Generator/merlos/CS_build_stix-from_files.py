@@ -6,13 +6,13 @@
 # - cabby 
 #   ~$ pip install cabby
 #
-# - python-cybox==2.1.0.12
+# - python-cybox==2.1.0.12 [TODO verificare versione corrente]
 #   ~$ git clone https://github.com/CybOXProject/python-cybox.git
 #   ~$ cd python-cybox/
 #   ~$ git checkout v2.1.0.12
 #   ~$ sudo python setup.py install
 #
-# - python-stix==1.1.1.4
+# - python-stix==1.1.1.4 [TODO verificare versione corrente]
 #   ~$ git clone https://github.com/STIXProject/python-stix.git
 #   ~$ cd python-stix
 #   ~$ git checkout v1.1.1.4
@@ -20,11 +20,14 @@
 #
 # - stix
 #   ~$ pip install stix
+#
+# - validators
+#   ~$ pip install validators
 
 ##################################
 # PUSH degli IoC sulla rete Cyber Saiyan
 #
-# - Adattare le variabili di riga 88, riga 92 e riga 95
+# - Adattare le variabili di riga 93, riga 97 e riga 100
 #
 # - prima di procedere resettare il contenuto dei file CS-*.txt
 #   ~$ for file in CS-*.txt; do > $file; done
@@ -51,6 +54,8 @@ import sys
 import os.path
 import time
 import datetime
+import validators
+import re
 
 from stix.core import STIXPackage, STIXHeader
 from stix.data_marking import Marking, MarkingSpecification
@@ -147,78 +152,120 @@ def main():
     indicatorHASH.title = MyTITLE + " - HASH"
     indicatorHASH.add_indicator_type("File Hash Watchlist")
     
+    print "Reading IoC sha256 file..."
+    p = re.compile(r"^[0-9a-f]{64}$", re.IGNORECASE)
     for idx, sha256 in enumerate(sha256):
-    	filei = File()
-        filei.add_hash(Hash(sha256))
+        m = p.match(sha256)
+        if m:
+    	    filei = File()
+            filei.add_hash(Hash(sha256))
     	
-        obsi = Observable(filei)
-        indicatorHASH.add_observable(obsi)
+            obsi = Observable(filei)
+            indicatorHASH.add_observable(obsi)
+        else:
+            print " Malformed sha256: " + sha256
+    print
     
+    print "Reading IoC md5 file..."
+    p = re.compile(r"^[0-9a-f]{32}$", re.IGNORECASE)
     for idx, md5 in enumerate(md5):
-    	filej = File()
-        filej.add_hash(Hash(md5))
+        m = p.match(md5)
+        if m:
+    	    filej = File()
+            filej.add_hash(Hash(md5))
     	
-        obsj = Observable(filej)
-        indicatorHASH.add_observable(obsj)
+            obsj = Observable(filej)
+            indicatorHASH.add_observable(obsj)
+        else:
+            print " Malformed md5: " + md5
+    print
 
+    print "Reading IoC sha1 file..."
+    p = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
     for idx, sha1 in enumerate(sha1):
-    	filek = File()
-        filek.add_hash(Hash(sha1))
+        m = p.match(sha1)
+        if m:
+    	    filek = File()
+            filek.add_hash(Hash(sha1))
     	
-        obsk = Observable(filek)
-        indicatorHASH.add_observable(obsk)
+            obsk = Observable(filek)
+            indicatorHASH.add_observable(obsk)
+        else:
+            print " Malformed sha1: " + sha1
+    print
     
     # DOMAIN indicators
     indiDOMAIN = Indicator()
     indiDOMAIN.title = MyTITLE + " - DOMAIN"
     indiDOMAIN.add_indicator_type("Domain Watchlist")
 
+    print "Reading IoC domains file..."
     for idu, domains in enumerate(domains):
-        url = URI()
-	url.value = domains
-	url.type_ =  URI.TYPE_DOMAIN
-	url.condition = "Equals"
+        if validators.domain(domains):
+            url = URI()
+            url.value = domains
+	    url.type_ =  URI.TYPE_DOMAIN
+	    url.condition = "Equals"
+
+            obsu = Observable(url)
+            indiDOMAIN.add_observable(obsu)
+        else:
+            print " Malformed domain: " + domains
+    print
         
-        obsu = Observable(url)
-        indiDOMAIN.add_observable(obsu)
 
     # URL indicators
     indiURL = Indicator()
     indiURL.title = MyTITLE + " - URL"
     indiURL.add_indicator_type("URL Watchlist")
 
+    print "Reading IoC url file..."
     for idu, urls in enumerate(urls):
-        url = URI()
-	url.value = urls
-	url.type_ =  URI.TYPE_URL
-	url.condition = "Equals"
-
-        obsu = Observable(url)
-        indiURL.add_observable(obsu)
+        if validators.url(urls):
+            url = URI()
+            url.value = urls
+	    url.type_ =  URI.TYPE_URL
+	    url.condition = "Equals"
+            
+            obsu = Observable(url)
+            indiURL.add_observable(obsu)
+        else:
+            print " Malformed url: " + urls
+    print
 
     # IP indicators
     indiIP = Indicator()
     indiIP.title = MyTITLE + " - IP"
     indiIP.add_indicator_type("IP Watchlist")
 
+    print "Reading IoC IP file..."
     for idu, ips in enumerate(ips):
-        ip = Address()
-	ip.address_value = ips
+        if validators.ipv4(ips):
+            ip = Address()
+	    ip.address_value = ips
         
-        obsu = Observable(ip)
-        indiIP.add_observable(obsu)
+            obsu = Observable(ip)
+            indiIP.add_observable(obsu)
+        else:
+            print " Malformed IP: " + ips
+    print
 
     # EMAIL indicators
     indiEMAIL = Indicator()
     indiEMAIL.title = MyTITLE + " - EMAIL"
     indiEMAIL.add_indicator_type("Malicious E-mail")
 
+    print "Reading IoC email file..."
     for idu, emails in enumerate(emails):
-        email = EmailAddress()
-	email.address_value = emails
+        if validators.email(emails):
+            email = EmailAddress()
+	    email.address_value = emails
         
-        obsu = Observable(email)
-        indiEMAIL.add_observable(obsu)
+            obsu = Observable(email)
+            indiEMAIL.add_observable(obsu)
+        else:
+            print " Malformed email: " + emails
+    print
 
     # add all indicators
     wrapper.add_indicator(indicatorHASH)
@@ -228,10 +275,11 @@ def main():
     wrapper.add_indicator(indiEMAIL)
    
     # print STIX file to stdout
-    print "OUTPUT: package.stix"
+    print "Writing STIX package: package.stix"
     f = open ("package.stix", "w")
     f.write (wrapper.to_xml())
     f.close ()
+    print 
     
 if __name__ == '__main__':
     main()
