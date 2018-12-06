@@ -24,7 +24,7 @@
 ##################################
 # PUSH degli IoC sulla rete Cyber Saiyan
 #
-# - Adattare le variabili di riga 85 e riga 89
+# - Adattare le variabili di riga 88, riga 92 e riga 95
 #
 # - prima di procedere resettare il contenuto dei file CS-*.txt
 #   ~$ for file in CS-*.txt; do > $file; done
@@ -85,12 +85,14 @@ def main():
     # MODIFICARE LE VARIABILI SEGUENTI
 
     # Il title e' ID univoco della minaccia (es. Cobalt / Danabot / APT28)
-    MyTITLE = "Danabot"
+    MyTITLE = "Gootkit"
 
     # La description strutturiamola come segue
     # <IOC PRODUCER> - <Descrizione della minaccia/campagna> - <URL (if any)>
-    DESCRIPTION = "CERT-PA - Campagna di Malspam diffonde il Trojan Danabot anche in Italia - https://www.cert-pa.it/notizie/campagna-di-malspam-diffonde-il-trojan-danabot-anche-in-italia/"
+    DESCRIPTION = "D3Lab - Malspam Gootkit con dropper da 450+ MB - https://www.d3lab.net/malspam-gootkit-con-dropper-da-450-mb/"
 
+    # La sorgente che ha generato l'IoC con riferimento a Cyber Saiyan Community 
+    IDENTITY = "D3Lab via Cyber Saiyan Community"
     #
     ######################################################################
 
@@ -117,6 +119,9 @@ def main():
     emails = loaddata(file_emails)
 
     # Build STIX file
+    info_src = InformationSource()
+    info_src.identity = Identity(name=IDENTITY)
+
     NAMESPACE = Namespace("https://infosharing.cybersaiyan.it", "CYBERSAIYAN")
     set_id_namespace(NAMESPACE)
 
@@ -124,8 +129,6 @@ def main():
     SHORT = timestamp
 
     wrapper = STIXPackage()
-    info_src = InformationSource()
-    info_src.identity = Identity(name="CyberSaiyan Community")
     
     marking_specification = MarkingSpecification()
     marking_specification.controlled_structure = "//node() | //@*"
@@ -136,7 +139,7 @@ def main():
     handling = Marking()
     handling.add_marking(marking_specification)
     
-    wrapper.stix_header = STIXHeader(information_source=info_src, title=MyTITLE, description=DESCRIPTION, short_description=SHORT)
+    wrapper.stix_header = STIXHeader(information_source=info_src, title=MyTITLE.encode(encoding='UTF-8', errors='replace'), description=DESCRIPTION.encode(encoding='UTF-8', errors='replace'), short_description=SHORT.encode(encoding='UTF-8', errors='replace'))
     wrapper.stix_header.handling = handling
     
     # HASH indicators
