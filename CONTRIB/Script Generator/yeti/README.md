@@ -1,6 +1,6 @@
 # Template Jinja2 per [Yeti](https://github.com/yeti-platform/yeti)
 
-Export template per precompilare observable di yeti nello script python di [merlos](CONTRIB/Script Generator/merlos/).
+Export template per precompilare observable di yeti nello script python di merlos.
 
 ## Utilizzo template
 
