@@ -11,7 +11,7 @@ Le varie componenti del servizio che si sta costruendo sono accessibili all'indi
 * [STIX/TAXII](IoC-STIX_TAXII.md)
 * [testo](IoC-text.md)
 
-La guida all'installazione del server e del software di base è [disponibile qui](INSTALL-Server_software.md).
+La guida all'installazione del server e del software di base è [disponibile qui](INSTALL/Server_software.md).
 Le configurazioni dei software (OpenTAXII e Minemeld) saranno descritte in un file a parte [TODO].
 
 ### Community
