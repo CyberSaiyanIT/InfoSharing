@@ -15,7 +15,7 @@ Di seguito è illustrata l'architettura implementata
 
 Le componenti CONSUMER del servizio sono accessibili all'indirizzo https://infosharing.cybersaiyan.it 
 * [STIX/TAXII](IoC-STIX_TAXII.md)
-* [testo](IoC-text.md)
+* [TEXT](IoC-text.md)
 
 La guida all'installazione del server e del software di base è [disponibile qui](INSTALL/Server_software.md).
 Le configurazioni dei software (OpenTAXII e Minemeld) saranno descritte in un file a parte [TODO].
