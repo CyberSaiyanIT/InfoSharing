@@ -7,7 +7,7 @@ Di seguito viene riportato uno schema dell'architettura.
 
 
 
-Per il download del CSV è utilizzato uno script bask originariamente sviluppato da Giovanni Mellini [LINK](https://scubarda.com/2017/08/11/minemeld-threat-intelligence-automation-foundation-write-a-custom-prototype-and-soc-integration/) e leggermente riadattato [LINK](InfoSharing/CONTRIB/scripts/csvdropper.sh), lo script effettua il download del file CSV in una directory temporanea con il nome indicato nella variabile filename e poi lo sposta nella directory indicata nella variabile dir, entrambe le fariabili sono da customizzare in base al contesto di installazione.
+Per il download del CSV è utilizzato uno script bask originariamente sviluppato da Giovanni Mellini [LINK](https://scubarda.com/2017/08/11/minemeld-threat-intelligence-automation-foundation-write-a-custom-prototype-and-soc-integration/) e leggermente riadattato [LINK](/CONTRIB/scripts/csvdropper.sh), lo script effettua il download del file CSV in una directory temporanea con il nome indicato nella variabile filename e poi lo sposta nella directory indicata nella variabile dir, entrambe le fariabili sono da customizzare in base al contesto di installazione.
 Una volta effettuato il download del file CSV occorre creare una funzione in una pipeline che crea un nuovo campo in caso di match tra l'indirizzo ip (sorgente o destinazione) e un'entry nel CSV appena scaricato.
 (N.B. in questo use case è stata applicata la pipeline ad uno stream contenente i messaggi provenienti da firewall)
 
@@ -30,5 +30,5 @@ Il lookup avviene tramite l'apposita funzione nella pipeline, è necessario defi
 ![l'architettura della pipeline](/img/lookuptable.JPG)
 
 
-A questo punto basta creare le regole da inserire nella pipeline, [QUI](InfoSharing/CONTRIB/Integration/pipeline_rule_example) è riportato un esempio. Il dettaglio della pipeine mostra come vengono applicate le rules (rispettivamente per IP sorgete e destinazione) all'interno della pipeline.
+A questo punto basta creare le regole da inserire nella pipeline, [QUI](/CONTRIB/Integration/pipeline_rule_example) è riportato un esempio. Il dettaglio della pipeine mostra come vengono applicate le rules (rispettivamente per IP sorgete e destinazione) all'interno della pipeline.
 N.B. I campi $message.dstip e $message.srcip presenti nelle rules vanno adattati allo scenario operativo, è pertanto importante verificare prima il nome dei field contenenti ip sorgente e destinazione.  
