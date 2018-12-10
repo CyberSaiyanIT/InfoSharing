@@ -9,7 +9,9 @@ Di seguito l'architettura di COMMUNITY che si è implementata, che prevede due c
 * la componente PRODUCER realizzata attraverso il software [OpenTAXII](http://www.opentaxii.org/en/stable/) su cui è stata configurata una collection denominata _community_ su cui è abilitato il PUSH autenticato di IoC in formato STIX 1.2
 * la componente CONSUMER realizzata attraverso il software [Minemled](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld) che effettua periodicamente il POLL degli IoC dalla collection _community_ di OpenTAXII e "ribalta" tali indicatori su due feed distinti (testo e STIX/TAXII)
 
-Di seguito è illustrata ![l'architettura implementata](img/architettura.png)
+Di seguito è illustrata l'architettura implementata
+
+![l'architettura implementata](img/architettura.png)
 
 Le componenti CONSUMER del servizio sono accessibili all'indirizzo https://infosharing.cybersaiyan.it 
 * [STIX/TAXII](IoC-STIX_TAXII.md)
