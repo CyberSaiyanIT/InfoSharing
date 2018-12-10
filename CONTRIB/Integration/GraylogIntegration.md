@@ -28,3 +28,7 @@ Il lookup avviene tramite l'apposita funzione nella pipeline, è necessario defi
 
 
 ![l'architettura della pipeline](/img/lookuptable.JPG)
+
+
+A questo punto basta creare le regole da inserire nella pipeline, [QUI](InfoSharing/CONTRIB/Integration/pipeline_rule_example) è riportato un esempio. Il dettaglio della pipeine mostra come vengono applicate le rules (rispettivamente per IP sorgete e destinazione) all'interno della pipeline.
+N.B. I campi $message.dstip e $message.srcip presenti nelle rules vanno adattati allo scenario operativo, è pertanto importante verificare prima il nome dei field contenenti ip sorgente e destinazione.  
