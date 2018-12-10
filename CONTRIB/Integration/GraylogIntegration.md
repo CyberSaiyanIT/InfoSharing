@@ -3,6 +3,7 @@ L'integrazione con Graylog è stata eseguita sfruttando le funzionalità pipelin
 Di seguito viene riportato uno schema dell'architettura.
 
 ![l'architettura della pipeline](/img/m2gl_ARCHITECTURE.png)
+Per il download del CSV è utilizzato uno script bask originariamente sviluppato da Giovanni Mellini [LINK](https://scubarda.com/2017/08/11/minemeld-threat-intelligence-automation-foundation-write-a-custom-prototype-and-soc-integration/) e leggermente riadattato [LINK](InfoSharing/CONTRIB/scripts/csvdropper.sh)
 
 
 ![l'architettura della pipeline](/img/Pipeline&#32;Diagram.png)
