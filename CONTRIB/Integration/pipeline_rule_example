@@ -1,0 +1,6 @@
+rule "dst_ip_check"
+when
+    is_not_null(lookup_value("cs_lookup", $message.dstip))
+then
+    set_field("dst_ip_rep","low");
+end
