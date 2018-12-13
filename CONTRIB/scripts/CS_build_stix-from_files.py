@@ -27,19 +27,14 @@
 ##################################
 # PUSH degli IoC sulla rete Cyber Saiyan
 #
-# - Adattare le variabili di riga 93, riga 97 e riga 100
+# - Adattare le variabili di riga 88, riga 92 e riga 95
 #
 # - prima di procedere resettare il contenuto dei file CS-*.txt
 #   ~$ for file in CS-*.txt; do > $file; done
 #
-# - inserire i vari IoC nei file corrispondenti
-#   - domain --> CS-domain.txt
-#   - ipv4 --> CS-ipv4.txt
-#   - sha256 --> CS-sha256.txt
-#   - sha1 --> CS-sha1.txt
-#   - md5 --> CS-md5.txt
-#   - url --> CS-url.txt
-#   - email --> CS-email.txt
+# - inserire gli IoC supportati (sha256, sha1, md5, domain, ipv4, url) nel file CS-ioc.txt
+#   lo script parsa il file linea per linea e usa delle espressioni regolari per validare gli IoC
+#   commenti o IoC malformati vengono ignorati
 #
 # - Generazione del file STIX da pushare successivamente sulla rete (file: package.stix)
 #   ~$ python -W ignore CS_build_stix.py
