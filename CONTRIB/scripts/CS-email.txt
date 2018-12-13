@@ -1,2 +1,0 @@
-email@fake.domain
-@fake.domain
