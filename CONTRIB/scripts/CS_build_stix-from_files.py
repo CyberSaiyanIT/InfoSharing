@@ -6,16 +6,14 @@
 # - cabby 
 #   ~$ pip install cabby
 #
-# - python-cybox==2.1.0.12 [TODO verificare versione corrente]
+# - python-cybox
 #   ~$ git clone https://github.com/CybOXProject/python-cybox.git
 #   ~$ cd python-cybox/
-#   ~$ git checkout v2.1.0.12
 #   ~$ sudo python setup.py install
 #
-# - python-stix==1.1.1.4 [TODO verificare versione corrente]
+# - python-stix
 #   ~$ git clone https://github.com/STIXProject/python-stix.git
 #   ~$ cd python-stix
-#   ~$ git checkout v1.1.1.4
 #   ~$ sudo python setup.py install 
 #
 # - stix
@@ -29,8 +27,8 @@
 #
 # - Adattare le variabili di riga 88, riga 92 e riga 95
 #
-# - prima di procedere resettare il contenuto dei file CS-*.txt
-#   ~$ for file in CS-*.txt; do > $file; done
+# - prima di procedere resettare il contenuto dei file CS-ioc.txt
+#   ~$ > CS-ioc.txt
 #
 # - inserire gli IoC supportati (sha256, sha1, md5, domain, ipv4, url) nel file CS-ioc.txt
 #   lo script parsa il file linea per linea e usa delle espressioni regolari per validare gli IoC
