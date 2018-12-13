@@ -27,19 +27,14 @@
 ##################################
 # PUSH degli IoC sulla rete Cyber Saiyan
 #
-# - Adattare le variabili di riga 93, riga 97 e riga 100
+# - Adattare le variabili di riga 88, riga 92 e riga 95
 #
 # - prima di procedere resettare il contenuto dei file CS-*.txt
 #   ~$ for file in CS-*.txt; do > $file; done
 #
-# - inserire i vari IoC nei file corrispondenti
-#   - domain --> CS-domain.txt
-#   - ipv4 --> CS-ipv4.txt
-#   - sha256 --> CS-sha256.txt
-#   - sha1 --> CS-sha1.txt
-#   - md5 --> CS-md5.txt
-#   - url --> CS-url.txt
-#   - email --> CS-email.txt
+# - inserire gli IoC supportati (sha256, sha1, md5, domain, ipv4, url) nel file CS-ioc.txt
+#   lo script parsa il file linea per linea e usa delle espressioni regolari per validare gli IoC
+#   commenti o IoC malformati vengono ignorati
 #
 # - Generazione del file STIX da pushare successivamente sulla rete (file: package.stix)
 #   ~$ python -W ignore CS_build_stix.py
@@ -90,38 +85,16 @@ def main():
     # MODIFICARE LE VARIABILI SEGUENTI
 
     # Il title e' ID univoco della minaccia (es. Cobalt / Danabot / APT28)
-    MyTITLE = "Gootkit"
+    MyTITLE = "GandCrab"
 
     # La description strutturiamola come segue
     # <IOC PRODUCER> - <Descrizione della minaccia/campagna> - <URL (if any)>
-    DESCRIPTION = "D3Lab - Malspam Gootkit con dropper da 450+ MB - https://www.d3lab.net/malspam-gootkit-con-dropper-da-450-mb/"
+    DESCRIPTION = "CERT-PA - Nuova campagna di Cyber-Estorsione basata su ransomware GandCrab - https://www.cert-pa.it/notizie/nuova-campagna-di-cyber-estorsione-basata-su-ransomware-gandcrab/"
 
     # La sorgente che ha generato l'IoC con riferimento a Cyber Saiyan Community 
-    IDENTITY = "D3Lab via Cyber Saiyan Community"
+    IDENTITY = "CERT-PA via Cyber Saiyan Community"
     #
     ######################################################################
-
-    # read IoC files
-    file_sha256 = "CS-sha256.txt"
-    sha256 = loaddata(file_sha256)
-
-    file_md5 = "CS-md5.txt"
-    md5 = loaddata(file_md5)
-
-    file_sha1 = "CS-sha1.txt"
-    sha1 = loaddata(file_sha1)
-
-    file_domains = "CS-domain.txt"
-    domains = loaddata(file_domains)
-
-    file_urls = "CS-url.txt"
-    urls = loaddata(file_urls)
-
-    file_ips = "CS-ipv4.txt"
-    ips = loaddata(file_ips)
-
-    file_emails = "CS-email.txt"
-    emails = loaddata(file_emails)
 
     # Build STIX file
     info_src = InformationSource()
@@ -152,122 +125,105 @@ def main():
     indicatorHASH.title = MyTITLE + " - HASH"
     indicatorHASH.add_indicator_type("File Hash Watchlist")
     
-    print "Reading IoC sha256 file..."
-    p = re.compile(r"^[0-9a-f]{64}$", re.IGNORECASE)
-    for idx, sha256 in enumerate(sha256):
-        m = p.match(sha256)
-        if m:
-    	    filei = File()
-            filei.add_hash(Hash(sha256))
-    	
-            obsi = Observable(filei)
-            indicatorHASH.add_observable(obsi)
-        else:
-            print " Malformed sha256: " + sha256
-    print
-    
-    print "Reading IoC md5 file..."
-    p = re.compile(r"^[0-9a-f]{32}$", re.IGNORECASE)
-    for idx, md5 in enumerate(md5):
-        m = p.match(md5)
-        if m:
-    	    filej = File()
-            filej.add_hash(Hash(md5))
-    	
-            obsj = Observable(filej)
-            indicatorHASH.add_observable(obsj)
-        else:
-            print " Malformed md5: " + md5
-    print
-
-    print "Reading IoC sha1 file..."
-    p = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
-    for idx, sha1 in enumerate(sha1):
-        m = p.match(sha1)
-        if m:
-    	    filek = File()
-            filek.add_hash(Hash(sha1))
-    	
-            obsk = Observable(filek)
-            indicatorHASH.add_observable(obsk)
-        else:
-            print " Malformed sha1: " + sha1
-    print
-    
     # DOMAIN indicators
     indiDOMAIN = Indicator()
     indiDOMAIN.title = MyTITLE + " - DOMAIN"
     indiDOMAIN.add_indicator_type("Domain Watchlist")
-
-    print "Reading IoC domains file..."
-    for idu, domains in enumerate(domains):
-        if validators.domain(domains):
-            url = URI()
-            url.value = domains
-	    url.type_ =  URI.TYPE_DOMAIN
-	    url.condition = "Equals"
-
-            obsu = Observable(url)
-            indiDOMAIN.add_observable(obsu)
-        else:
-            print " Malformed domain: " + domains
-    print
-        
 
     # URL indicators
     indiURL = Indicator()
     indiURL.title = MyTITLE + " - URL"
     indiURL.add_indicator_type("URL Watchlist")
 
-    print "Reading IoC url file..."
-    for idu, urls in enumerate(urls):
-        if validators.url(urls):
-            url = URI()
-            url.value = urls
-	    url.type_ =  URI.TYPE_URL
-	    url.condition = "Equals"
-            
-            obsu = Observable(url)
-            indiURL.add_observable(obsu)
-        else:
-            print " Malformed url: " + urls
-    print
-
     # IP indicators
     indiIP = Indicator()
     indiIP.title = MyTITLE + " - IP"
     indiIP.add_indicator_type("IP Watchlist")
-
-    print "Reading IoC IP file..."
-    for idu, ips in enumerate(ips):
-        if validators.ipv4(ips):
-            ip = Address()
-	    ip.address_value = ips
-        
-            obsu = Observable(ip)
-            indiIP.add_observable(obsu)
-        else:
-            print " Malformed IP: " + ips
-    print
 
     # EMAIL indicators
     indiEMAIL = Indicator()
     indiEMAIL.title = MyTITLE + " - EMAIL"
     indiEMAIL.add_indicator_type("Malicious E-mail")
 
-    print "Reading IoC email file..."
-    for idu, emails in enumerate(emails):
-        if validators.email(emails):
-            email = EmailAddress()
-	    email.address_value = emails
-        
-            obsu = Observable(email)
-            indiEMAIL.add_observable(obsu)
-        else:
-            print " Malformed email: " + emails
-    print
+    # Read IoC file
+    file_ioc = "CS-ioc.txt"
+    ioc = loaddata(file_ioc)
 
-    # add all indicators
+    print "Reading IoC file..."
+    for idx, ioc in enumerate(ioc):
+        notfound = 1
+        
+        # sha256
+        p = re.compile(r"^[0-9a-f]{64}$", re.IGNORECASE)
+        m = p.match(ioc)
+        if m and notfound:
+            filei = File()
+            filei.add_hash(Hash(ioc))
+        
+            obsi = Observable(filei)
+            indicatorHASH.add_observable(obsi)
+            print "SHA256: " + ioc
+            notfound = 0
+
+        #md5
+        p = re.compile(r"^[0-9a-f]{32}$", re.IGNORECASE)
+        m = p.match(ioc)
+        if m and notfound:
+            filej = File()
+            filej.add_hash(Hash(ioc))
+        
+            obsj = Observable(filej)
+            indicatorHASH.add_observable(obsj)
+            print "MD5: " + ioc
+            notfound = 0
+
+        #sha1
+        p = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
+        m = p.match(ioc)
+        if m and notfound:
+            filek = File()
+            filek.add_hash(Hash(ioc))
+        
+            obsk = Observable(filek)
+            indicatorHASH.add_observable(obsk)
+            print "SHA1: " + ioc
+            notfound = 0
+
+        #domains
+        if validators.domain(ioc) and notfound:
+            url = URI()
+            url.value = ioc
+            url.type_ =  URI.TYPE_DOMAIN
+            url.condition = "Equals"
+
+            obsu = Observable(url)
+            indiDOMAIN.add_observable(obsu)
+            print "DOMAIN: " + ioc
+            notfound = 0
+
+        #url
+        if validators.url(ioc) and notfound:
+            url = URI()
+            url.value = ioc
+            url.type_ =  URI.TYPE_URL
+            url.condition = "Equals"
+            
+            obsu = Observable(url)
+            indiURL.add_observable(obsu)
+            print "URL: " + ioc
+            notfound = 0
+
+        #ip
+        if validators.ipv4(ioc) and notfound:
+            ip = Address()
+            ip.address_value = ioc
+        
+            obsu = Observable(ip)
+            indiIP.add_observable(obsu)
+            print "IP: " + ioc
+            notfound = 0
+
+    # add all indicators to STIX
     wrapper.add_indicator(indicatorHASH)
     wrapper.add_indicator(indiDOMAIN)
     wrapper.add_indicator(indiURL)
