@@ -15,4 +15,4 @@ Si esporta un file CSV con riga di intestazione _type,indicator_ dove
 ### Esempio JSON
 Di seguito l'output in formato JSON
 
-https://infosharing.cybersaiyan.it/feeds/CS-HTTP?v=json
+https://infosharing.cybersaiyan.it/feeds/CS-COMMUNITY-HTTP?v=json
