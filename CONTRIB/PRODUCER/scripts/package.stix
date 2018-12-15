@@ -1,7 +1,8 @@
 <stix:STIX_Package 
+	xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1"
 	xmlns:stix="http://stix.mitre.org/stix-1"
 	xmlns:FileObj="http://cybox.mitre.org/objects#FileObject-2"
-	xmlns:tlpMarking="http://data-marking.mitre.org/extensions/MarkingStructure#TLP-1"
+	xmlns:AddressObj="http://cybox.mitre.org/objects#AddressObject-2"
 	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
 	xmlns:cyboxVocabs="http://cybox.mitre.org/default_vocabularies-2"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -15,11 +16,11 @@
 	xmlns:cyboxCommon="http://cybox.mitre.org/common-2"
 	xmlns:xs="http://www.w3.org/2001/XMLSchema"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
-	 id="CYBERSAIYAN:Package-869c5bb3-f42d-4ad7-b6c9-ceacaf7a05f9" version="1.2">
+	 id="CYBERSAIYAN:Package-bc4cbb11-cfde-44fe-8007-11b4b0f73668" version="1.2">
     <stix:STIX_Header>
-        <stix:Title>GandCrab</stix:Title>
-        <stix:Description>CERT-PA - Nuova campagna di Cyber-Estorsione basata su ransomware GandCrab - https://www.cert-pa.it/notizie/nuova-campagna-di-cyber-estorsione-basata-su-ransomware-gandcrab/</stix:Description>
-        <stix:Short_Description>2018-12-15 06:41:16</stix:Short_Description>
+        <stix:Title>Test</stix:Title>
+        <stix:Description>Cyber Saiyan - Test - https://infosharing.cybersaiyan.it</stix:Description>
+        <stix:Short_Description>2018-12-15 10:59:07</stix:Short_Description>
         <stix:Handling>
             <marking:Marking>
                 <marking:Controlled_Structure>//node() | //@*</marking:Controlled_Structure>
@@ -28,18 +29,18 @@
         </stix:Handling>
         <stix:Information_Source>
             <stixCommon:Identity>
-                <stixCommon:Name>CERT-PA via Cyber Saiyan Community</stixCommon:Name>
+                <stixCommon:Name>Cyber Saiyan Community</stixCommon:Name>
             </stixCommon:Identity>
         </stix:Information_Source>
     </stix:STIX_Header>
     <stix:Indicators>
-        <stix:Indicator id="CYBERSAIYAN:indicator-b7efb8f9-5700-4802-9363-dd145af50c6f" timestamp="2018-12-15T05:41:16.115162+00:00" xsi:type='indicator:IndicatorType'>
-            <indicator:Title>GandCrab - HASH</indicator:Title>
+        <stix:Indicator id="CYBERSAIYAN:indicator-d6d0b637-27d4-4f07-9448-b9c7269ef250" timestamp="2018-12-15T09:59:07.954380+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Test - HASH</indicator:Title>
             <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">File Hash Watchlist</indicator:Type>
-            <indicator:Observable id="CYBERSAIYAN:Observable-c6e0ae14-0773-4be7-abee-fd39b0ebc5be">
+            <indicator:Observable id="CYBERSAIYAN:Observable-e6d85cc2-ae8e-43ee-9f77-9d10fcb91d3f">
                 <cybox:Observable_Composition operator="OR">
-                    <cybox:Observable id="CYBERSAIYAN:Observable-ea57381e-5c0d-4c8f-a214-1d09de8c10d3">
-                        <cybox:Object id="CYBERSAIYAN:File-e56e6cc5-f131-45d4-8e67-5294f54f99fd">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-cdea9288-6450-49bf-8966-8572498642ff">
+                        <cybox:Object id="CYBERSAIYAN:File-d252be39-3c79-4ca0-aa42-5d9aea258a56">
                             <cybox:Properties xsi:type="FileObj:FileObjectType">
                                 <FileObj:Hashes>
                                     <cyboxCommon:Hash>
@@ -50,8 +51,8 @@
                             </cybox:Properties>
                         </cybox:Object>
                     </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-b9d87811-b29e-4c27-b2a5-4db2dcd72d53">
-                        <cybox:Object id="CYBERSAIYAN:File-b89abe3d-29aa-4e83-abb6-df191ecc6229">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-08dd795b-9590-4e9a-820c-4123a55a4ca1">
+                        <cybox:Object id="CYBERSAIYAN:File-ad17a4dd-8b4d-47b1-8f18-278b0a6180a6">
                             <cybox:Properties xsi:type="FileObj:FileObjectType">
                                 <FileObj:Hashes>
                                     <cyboxCommon:Hash>
@@ -62,8 +63,8 @@
                             </cybox:Properties>
                         </cybox:Object>
                     </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-98259dd5-5650-4d16-ada7-46587043d7df">
-                        <cybox:Object id="CYBERSAIYAN:File-e82fe89e-e098-4970-8130-688b25bb7298">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-b50b35d3-ad65-4cc4-8318-b4430f6a15b1">
+                        <cybox:Object id="CYBERSAIYAN:File-8a7ab1d6-8972-4d9b-b9a7-753e034586d3">
                             <cybox:Properties xsi:type="FileObj:FileObjectType">
                                 <FileObj:Hashes>
                                     <cyboxCommon:Hash>
@@ -74,164 +75,131 @@
                             </cybox:Properties>
                         </cybox:Object>
                     </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-68caf6bc-5ac0-4f5a-8e7c-8bd95aebc800">
+                        <cybox:Object id="CYBERSAIYAN:File-7028f4a5-60de-4334-8126-458f5cbb2ce0">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>6753b7f8f0ddc71c97a47ba621952e3d9fef6bdd</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-e228157e-9d93-4ef8-948f-6354519b28a2">
+                        <cybox:Object id="CYBERSAIYAN:File-df2c4027-79c4-44f4-a3d4-54173c5e74d0">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>d3fa5d024b9119fa86435e0b909eaaa846fd182e</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-edb01d97-1139-4a8e-b358-a549c311651e">
+                        <cybox:Object id="CYBERSAIYAN:File-1ca5bb4b-687f-4419-a6a4-602cf2b53921">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA1</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>e5f790a411b486a3a8acc87601c72e08e3cf586e</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-4210db97-9d06-40e0-aee6-d3feefd29382">
+                        <cybox:Object id="CYBERSAIYAN:File-bc14cfcc-6830-49d2-a8b2-9901248b5218">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>f583ca884c1d93458fb61ed137ff44f6</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-bd63e81d-1ca1-4e14-95bc-bce23ed976cd">
+                        <cybox:Object id="CYBERSAIYAN:File-6f30bb28-c131-4a7b-bd11-4ca192082296">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>3eb876507d4373f2ba589f9dde5982b9</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-0ee557e6-55fd-417f-9da4-cb792cb22150">
+                        <cybox:Object id="CYBERSAIYAN:File-08ba7321-5fa9-4da8-a22f-765a78e34a39">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">MD5</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>5ffaf3df68e0aa6d62e7f1158f2887ba</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
                 </cybox:Observable_Composition>
             </indicator:Observable>
         </stix:Indicator>
-        <stix:Indicator id="CYBERSAIYAN:indicator-5d1a9dc7-2ac7-47ab-909f-e9e98fadfa63" timestamp="2018-12-15T05:41:16.116983+00:00" xsi:type='indicator:IndicatorType'>
-            <indicator:Title>GandCrab - DOMAIN</indicator:Title>
+        <stix:Indicator id="CYBERSAIYAN:indicator-d7b085e5-f55a-4c85-9795-3449f32977a4" timestamp="2018-12-15T09:59:07.955397+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Test - DOMAIN</indicator:Title>
             <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Domain Watchlist</indicator:Type>
-            <indicator:Observable id="CYBERSAIYAN:Observable-e6d80621-437c-4b69-a73c-f89b6cdbddf0">
+            <indicator:Observable id="CYBERSAIYAN:Observable-bc51bf5f-3f9e-411d-a8fa-6547d910e322">
                 <cybox:Observable_Composition operator="OR">
-                    <cybox:Observable id="CYBERSAIYAN:Observable-94a1bed9-c40e-4c45-8ac1-0cb2a90ea505">
-                        <cybox:Object id="CYBERSAIYAN:URI-e93526b5-47e7-4ae2-9d15-e96dfe4cfd55">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-84659648-5972-4827-b428-2d6518a93be6">
+                        <cybox:Object id="CYBERSAIYAN:URI-366f1c9e-9c03-440c-ad0b-8d66974e50dc">
                             <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
                                 <URIObj:Value>www.holzbock.biz</URIObj:Value>
                             </cybox:Properties>
                         </cybox:Object>
                     </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-5a104a3a-38ad-4613-9158-1d6bef9a03a8">
-                        <cybox:Object id="CYBERSAIYAN:URI-5951f716-64bd-4882-975c-961b0bce3b07">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-0770e81e-e000-4a26-882c-a4f0d1467b97">
+                        <cybox:Object id="CYBERSAIYAN:URI-5a970210-b95b-4283-8659-22cffd43ef45">
                             <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
                                 <URIObj:Value>hosting-ch.ch</URIObj:Value>
                             </cybox:Properties>
                         </cybox:Object>
                     </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-6fda1f54-bfa9-4f72-9a9b-1c7c9ba3ce9b">
-                        <cybox:Object id="CYBERSAIYAN:URI-8074f9c9-3872-443a-a74e-16e3c17c7bac">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-205ab208-d90c-4c87-bf20-af1fe4fbd5ca">
+                        <cybox:Object id="CYBERSAIYAN:URI-ceb8a5f0-b4bc-4b5b-afb3-0ae12be832c4">
                             <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
                                 <URIObj:Value>www.fliptray.biz</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-3f14b6a3-56ad-4920-81cd-98d5ec48cbb7">
-                        <cybox:Object id="CYBERSAIYAN:URI-586c5db6-3881-4721-b84e-41a4c583e8ba">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>bizziniinfissi.com</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-8bc613b7-ad93-4c46-b9a5-53c0e02f7c3b">
-                        <cybox:Object id="CYBERSAIYAN:URI-b7082848-795c-40a9-ac11-4e4a3e45a409">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>fliptray.biz</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-0fad57a5-2a67-4612-8cf8-2fd21130f83f">
-                        <cybox:Object id="CYBERSAIYAN:URI-3f1b52d7-eef1-4f19-8ee5-61d04667c84c">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>www.swisswellness.com</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-d1b4c914-da86-4691-9b22-edbe51952218">
-                        <cybox:Object id="CYBERSAIYAN:URI-33f01609-96fe-47eb-8420-717a4d0913a8">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>www.bizziniinfissi.com</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-dae847d5-47f0-44a6-b4c2-c09afbfc5721">
-                        <cybox:Object id="CYBERSAIYAN:URI-5c04765c-aae3-41ee-ad73-36242fca2f14">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>www.whitepod.com</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-647bd728-18a0-4485-892b-e0cc3fd58f86">
-                        <cybox:Object id="CYBERSAIYAN:URI-ed996ef4-acc7-498d-b9dc-9e4e0681b6d7">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>dns1.agrinet.ch</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-fc7c9b2a-7331-4090-b110-3590e6a716b5">
-                        <cybox:Object id="CYBERSAIYAN:URI-247b03eb-c09c-4c87-ba22-2c997c59df0a">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>www.pizcam.com</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-ebeff9ff-53c3-46f2-880f-abeb94a13887">
-                        <cybox:Object id="CYBERSAIYAN:URI-43798242-3186-4b95-a5ed-b72e75941267">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>www.2mmotorsport.biz</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-400f99e4-0105-4198-b0af-bc5af9166380">
-                        <cybox:Object id="CYBERSAIYAN:URI-08472557-190b-4b47-84dc-ad41916afef6">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>www.hotelweisshorn.com</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-ba02d58a-20a2-440e-b6fd-ee2349da7922">
-                        <cybox:Object id="CYBERSAIYAN:URI-d482fa21-31f2-4161-ab0f-9ea7d7efb5e0">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>pizcam.com</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-2117d690-05a1-4caf-a340-d8011efbacb3">
-                        <cybox:Object id="CYBERSAIYAN:URI-9ef31785-6611-46c9-a481-e0c6f64b7460">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>haargenau.biz</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-2c9ba954-d3df-477a-91b2-31a27a03daca">
-                        <cybox:Object id="CYBERSAIYAN:URI-c605f9f8-6899-4c88-b00c-5c9112c817e9">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>dns2.agrinet.ch</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-e5548845-b312-4a67-87e4-d324dddf0c1a">
-                        <cybox:Object id="CYBERSAIYAN:URI-6917c014-6307-4f87-88ce-1164ac62d087">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>swisswellness.com</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-96014a34-dfe2-4588-a8dc-e20acd09530a">
-                        <cybox:Object id="CYBERSAIYAN:URI-c62a7988-b3c7-4fe0-b6b3-26531b253153">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>www.haargenau.biz</URIObj:Value>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-5e580ee4-cb1d-45e5-b58c-670c640401ae">
-                        <cybox:Object id="CYBERSAIYAN:URI-903aac86-9af9-4b93-ab2f-04c06c1bc77f">
-                            <cybox:Properties xsi:type="URIObj:URIObjectType" type="Domain Name">
-                                <URIObj:Value>whitepod.com</URIObj:Value>
                             </cybox:Properties>
                         </cybox:Object>
                     </cybox:Observable>
                 </cybox:Observable_Composition>
             </indicator:Observable>
         </stix:Indicator>
-        <stix:Indicator id="CYBERSAIYAN:indicator-e92f5f6b-e4b5-4994-9382-f79754dc72f4" timestamp="2018-12-15T05:41:16.117113+00:00" xsi:type='indicator:IndicatorType'>
-            <indicator:Title>GandCrab - URL</indicator:Title>
+        <stix:Indicator id="CYBERSAIYAN:indicator-16ea6f11-a2e5-4119-a07a-dc95c39da3dd" timestamp="2018-12-15T09:59:07.955489+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Test - URL</indicator:Title>
             <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">URL Watchlist</indicator:Type>
-            <indicator:Observable id="CYBERSAIYAN:Observable-29fb0ef0-c91b-4488-b20b-748d263d8c55">
+            <indicator:Observable id="CYBERSAIYAN:Observable-ce29b0c0-bed8-4445-beec-067cff1f7ceb">
                 <cybox:Observable_Composition operator="OR">
-                    <cybox:Observable id="CYBERSAIYAN:Observable-de20e06b-4805-4c0e-ba06-a3be0f37ebd8">
-                        <cybox:Object id="CYBERSAIYAN:URI-dd8f98e0-7041-44fc-8477-a87b20712b65">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-9da6a42b-00f2-4854-b0ce-21feec5d2e14">
+                        <cybox:Object id="CYBERSAIYAN:URI-4ef610c5-caf8-47bf-8f23-fffb06e68b15">
                             <cybox:Properties xsi:type="URIObj:URIObjectType" type="URL">
                                 <URIObj:Value>http://egorgerov3.temp.swtest.ru/index.php</URIObj:Value>
                             </cybox:Properties>
                         </cybox:Object>
                     </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-d504fbbb-68db-497f-8b43-ff0de2bf6f6f">
-                        <cybox:Object id="CYBERSAIYAN:URI-5b9c65ff-a19f-46f6-ba75-cfa21c0d78d9">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-35d17030-0b79-44d2-b199-3ba1b133f3ba">
+                        <cybox:Object id="CYBERSAIYAN:URI-71c2cc0b-3060-4c96-ae23-b747cf63332d">
                             <cybox:Properties xsi:type="URIObj:URIObjectType" type="URL">
                                 <URIObj:Value>http://supermainers.online/exp.exe</URIObj:Value>
                             </cybox:Properties>
                         </cybox:Object>
                     </cybox:Observable>
-                    <cybox:Observable id="CYBERSAIYAN:Observable-160d6348-4f0b-4cc4-87f8-c5825af75fa8">
-                        <cybox:Object id="CYBERSAIYAN:URI-b8deaf3c-33d2-440b-9a7d-951d8dce6d74">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-4a4e69bf-dadd-4639-ba92-3f506a1f5a66">
+                        <cybox:Object id="CYBERSAIYAN:URI-ecd9bb99-7929-4c63-8d6f-458e6d37ef38">
                             <cybox:Properties xsi:type="URIObj:URIObjectType" type="URL">
                                 <URIObj:Value>http://jdhftu.tk</URIObj:Value>
                             </cybox:Properties>
@@ -240,13 +208,63 @@
                 </cybox:Observable_Composition>
             </indicator:Observable>
         </stix:Indicator>
-        <stix:Indicator id="CYBERSAIYAN:indicator-167436cc-da10-4ed7-821f-85e3488a6346" timestamp="2018-12-15T05:41:16.117217+00:00" xsi:type='indicator:IndicatorType'>
-            <indicator:Title>GandCrab - IP</indicator:Title>
+        <stix:Indicator id="CYBERSAIYAN:indicator-76c13d81-c5b1-4573-88bf-02f206a9b496" timestamp="2018-12-15T09:59:07.955624+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Test - IP</indicator:Title>
             <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">IP Watchlist</indicator:Type>
+            <indicator:Observable id="CYBERSAIYAN:Observable-6f05853c-cc39-4adc-a4d3-b06db4da2553">
+                <cybox:Observable_Composition operator="OR">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-dffdca41-3a62-47e5-b39d-1755d31b5cf0">
+                        <cybox:Object id="CYBERSAIYAN:Address-8747e539-db0a-415b-96e2-6c49db8ce7e3">
+                            <cybox:Properties xsi:type="AddressObj:AddressObjectType">
+                                <AddressObj:Address_Value>192.168.0.1</AddressObj:Address_Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-86035112-244e-4a44-b48e-a12002c5efec">
+                        <cybox:Object id="CYBERSAIYAN:Address-50ac6567-15d9-4a1f-abd7-09cf6e41e799">
+                            <cybox:Properties xsi:type="AddressObj:AddressObjectType">
+                                <AddressObj:Address_Value>10.0.0.254</AddressObj:Address_Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-32518ace-0aad-4074-bdfb-a1c6ea53c306">
+                        <cybox:Object id="CYBERSAIYAN:Address-f5d63d9b-d3ee-4757-9f13-7fae65fe0817">
+                            <cybox:Properties xsi:type="AddressObj:AddressObjectType">
+                                <AddressObj:Address_Value>172.16.33.4</AddressObj:Address_Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                </cybox:Observable_Composition>
+            </indicator:Observable>
         </stix:Indicator>
-        <stix:Indicator id="CYBERSAIYAN:indicator-06dfaf60-dc1a-4e19-9445-df27f0e84ce2" timestamp="2018-12-15T05:41:16.117318+00:00" xsi:type='indicator:IndicatorType'>
-            <indicator:Title>GandCrab - EMAIL</indicator:Title>
+        <stix:Indicator id="CYBERSAIYAN:indicator-5c95e4cb-2790-4c41-92fa-164ace33f5ca" timestamp="2018-12-15T09:59:07.955710+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Test - EMAIL</indicator:Title>
             <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">Malicious E-mail</indicator:Type>
+            <indicator:Observable id="CYBERSAIYAN:Observable-39aba90b-98a3-4bbc-a9c1-e5b2cdef67ab">
+                <cybox:Observable_Composition operator="OR">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-da892ea2-2334-4f2b-b01e-a471daa0288f">
+                        <cybox:Object id="CYBERSAIYAN:EmailAddress-45e7aa6b-f8fd-4f04-b575-84a1c1879717">
+                            <cybox:Properties xsi:type="AddressObj:AddressObjectType" category="e-mail">
+                                <AddressObj:Address_Value>test@gio.com</AddressObj:Address_Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-ea858673-f55b-4aea-a363-202b7886ac37">
+                        <cybox:Object id="CYBERSAIYAN:EmailAddress-7726fbd4-0587-4358-97c0-ac70fe99f359">
+                            <cybox:Properties xsi:type="AddressObj:AddressObjectType" category="e-mail">
+                                <AddressObj:Address_Value>test2@fake.gio2.net</AddressObj:Address_Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                    <cybox:Observable id="CYBERSAIYAN:Observable-ff0c273a-7aa5-4b0a-9b1e-e80cff0358a3">
+                        <cybox:Object id="CYBERSAIYAN:EmailAddress-26ec9fa5-0457-4c97-827f-0d9762d3353c">
+                            <cybox:Properties xsi:type="AddressObj:AddressObjectType" category="e-mail">
+                                <AddressObj:Address_Value>test3@gio3.it</AddressObj:Address_Value>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+                </cybox:Observable_Composition>
+            </indicator:Observable>
         </stix:Indicator>
     </stix:Indicators>
 </stix:STIX_Package>
