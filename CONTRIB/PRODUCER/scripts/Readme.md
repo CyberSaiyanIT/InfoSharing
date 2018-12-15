@@ -33,9 +33,10 @@ Prima di eseguire lo script effettuare le seguenti operazioni
 * eseguire lo script  ```python -W ignore CS_build_stix.py```
 
 Dopo l'esecuzione sono generati due file (esempi nella dir)
-* _package.stix_: file STIX 1.2 (XML)
-* _package.stix2_: file STIX 2 (JSON)
+* _package.stix_: file STIX 1.2 [XML](/CONTRIB/PRODUCER/scripts/package.stix)
+* _package.stix2_: file STIX 2 [JSON](/CONTRIB/PRODUCER/scripts/package.stix2)
 
+## PUSH STIX 1.2
 Dopo aver creato i file STIX è necessario fare il PUSH (via Cabby in questo esempio) del file STIX 1.2 (unico formato supportato al momento) sulla rete STIX/TAXII della community Cyber Saiyan.
 Di seguito il comando da eseguire che richiesde una password (il PUSH è autenticato); nel caso in cui si volesse contribuire unirsi al [gruppo Telegram](https://t.me/joinchat/Av4DDFjVkRC60YH_Lq-WVw)
 ```
