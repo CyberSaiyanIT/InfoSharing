@@ -17,8 +17,16 @@ Le componenti CONSUMER del servizio sono accessibili all'indirizzo https://infos
 * [STIX/TAXII](IoC-STIX_TAXII.md)
 * [TEXT](IoC-text.md)
 
+La cartella [CONTRIB](/CONTRIB/) contiene esempi di integrazione CONSUMER e PRODUCER in fase di test da parte della community.
+Di seguito i link a quanto prodotto
+* [CONSUMER/Graylog](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
+* [PRODUCER/Script per push su rete](/CONTRIB/PRODUCER/scripts/): script python per generare i file STIX (1.2 e 2) che devono poi essere inviati sulla rete per successiva redistribuzione ai CONSUMER
+* [PRODUCER/Yeti](/CONTRIB/PRODUCER/yeti): Export template per precompilare observable di yeti in formato utilizzabile con lo [script PRODUCER](/CONTRIB/PRODUCER/scripts/)
+
+### Installazione
 La guida all'installazione del server e del software di base è [disponibile qui](INSTALL/Server_software.md).
-Le configurazioni dei software (OpenTAXII e Minemeld) saranno descritte in un file a parte [TODO].
+
+Le configurazioni dei software (OpenTAXII e Minemeld) saranno descritte in seguito [TODO].
 
 ### Community
 Il progetto è un'iniziativa volontaria portata avanti dalla community di Cyber Saiyan.
