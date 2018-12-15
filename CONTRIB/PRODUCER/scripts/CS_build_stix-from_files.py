@@ -1,10 +1,5 @@
 #!/usr/bin/env python
-
-# - PUSH via Cabby del file package.stix sulla collection dedicata "community" (la password per il push deve essere richiesta sul gruppo Telegram dedicato)
-#   ~$ taxii-push --discovery https://infosharing.cybersaiyan.it:9000/services/discovery --dest community --username community --password <TO-BE-SENT> --content-file package.stix
-#
-# - Verifica via Cabby degli IoC (tempo di aggiornamento massimo 10 minuti)
-#   ~$ taxii-poll --host infosharing.cybersaiyan.it --https --collection CS-COMMUNITY-TAXII --discovery /taxii-discovery-service
+# Informazioni su installazione ed utilizzo https://github.com/CyberSaiyanIT/InfoSharing/tree/master/CONTRIB/PRODUCER/scripts
 
 import sys
 import os.path
