@@ -2,11 +2,16 @@
 # Informazioni su installazione ed utilizzo https://github.com/CyberSaiyanIT/InfoSharing/tree/master/CONTRIB/PRODUCER/scripts
 
 import sys
+import getopt
 import os.path
 import time
 import datetime
 import validators
 import re
+
+import warnings
+if not sys.warnoptions:
+    warnings.simplefilter("ignore")
 
 from stix.core import STIXPackage, STIXHeader
 from stix.data_marking import Marking, MarkingSpecification
@@ -37,13 +42,12 @@ def loaddata(file_in):
     else:
         return []
 
-def main():
+def main(argv):
 
     ######################################################################
-    # MODIFICARE LE VARIABILI SEGUENTI
-
+    # Se non impostati da command line vengono utilizzati i seguenti valori per TITLE, DESCRIPTION, IDENTITY
     # Il title e' ID univoco della minaccia (es. Cobalt / Danabot / APT28)
-    MyTITLE = "Test"
+    TITLE = "Test"
 
     # La description strutturiamola come segue
     # <IOC PRODUCER> - <Descrizione della minaccia/campagna> - <URL (if any)>
@@ -51,8 +55,46 @@ def main():
 
     # La sorgente che ha generato l'IoC con riferimento a Cyber Saiyan Community 
     IDENTITY = "Cyber Saiyan Community"
-    #
+
+    # File degli IoC
+    IOCFILE = "CS-ioc.txt"
     ######################################################################
+
+    VERBOSE = 0
+
+    # Parse ARGV[]
+    try:
+        opts, args = getopt.getopt(argv, "ht:d:i:v")
+    except getopt.GetoptError:
+      print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE]'
+      sys.exit(2)
+
+    for opt, arg in opts:
+        if opt == '-h':
+            print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE]'
+            sys.exit()
+        elif opt == '-t':
+            TITLE = arg
+        elif opt == '-d':
+            DESCRIPTION = arg
+        elif opt == '-i':
+            IDENTITY = arg
+        elif opt == '-f':
+            IOCFILE = arg
+        elif opt == '-v':
+            VERBOSE = 1
+
+    # UTF8 encode
+    TITLE = TITLE.encode('utf8')
+    DESCRIPTION = DESCRIPTION.encode('utf8')
+    IDENTITY = IDENTITY.encode('utf8')
+    
+    print "---------------------"
+    print "TITLE: " + TITLE
+    print "DESCRIPTION: " + DESCRIPTION
+    print "IDENTITY: " + IDENTITY
+    print "IOC FILE: " + IOCFILE
+    print "---------------------"
 
     ########################
     # Commond data
@@ -79,32 +121,32 @@ def main():
     handling = Marking()
     handling.add_marking(marking_specification)
     
-    wrapper.stix_header = STIXHeader(information_source=info_src, title=MyTITLE.encode(encoding='UTF-8', errors='replace'), description=DESCRIPTION.encode(encoding='UTF-8', errors='replace'), short_description=SHORT.encode(encoding='UTF-8', errors='replace'))
+    wrapper.stix_header = STIXHeader(information_source=info_src, title=TITLE.encode(encoding='UTF-8', errors='replace'), description=DESCRIPTION.encode(encoding='UTF-8', errors='replace'), short_description=SHORT.encode(encoding='UTF-8', errors='replace'))
     wrapper.stix_header.handling = handling
     
     # HASH indicators
     indicatorHASH = Indicator()
-    indicatorHASH.title = MyTITLE + " - HASH"
+    indicatorHASH.title = TITLE + " - HASH"
     indicatorHASH.add_indicator_type("File Hash Watchlist")
     
     # DOMAIN indicators
     indiDOMAIN = Indicator()
-    indiDOMAIN.title = MyTITLE + " - DOMAIN"
+    indiDOMAIN.title = TITLE + " - DOMAIN"
     indiDOMAIN.add_indicator_type("Domain Watchlist")
 
     # URL indicators
     indiURL = Indicator()
-    indiURL.title = MyTITLE + " - URL"
+    indiURL.title = TITLE + " - URL"
     indiURL.add_indicator_type("URL Watchlist")
 
     # IP indicators
     indiIP = Indicator()
-    indiIP.title = MyTITLE + " - IP"
+    indiIP.title = TITLE + " - IP"
     indiIP.add_indicator_type("IP Watchlist")
 
     # EMAIL indicators
     indiEMAIL = Indicator()
-    indiEMAIL.title = MyTITLE + " - EMAIL"
+    indiEMAIL.title = TITLE + " - EMAIL"
     indiEMAIL.add_indicator_type("Malicious E-mail")
 
     ########################
@@ -130,7 +172,7 @@ def main():
     campaign_MAIN = stix2.Campaign(
         created=timestamp,
         modified=timestamp,
-        name=MyTITLE,
+        name=TITLE,
         description=DESCRIPTION,
         first_seen=timestamp,
         objective="TBD"
@@ -138,10 +180,9 @@ def main():
 
     ########################
     # Read IoC file
-    file_ioc = "CS-ioc.txt"
-    ioc = loaddata(file_ioc)
+    ioc = loaddata(IOCFILE)
 
-    print "Reading IoC file..."
+    if (VERBOSE): print "Reading IoC file " + IOCFILE + "..."
     for idx, ioc in enumerate(ioc):
         notfound = 1
         
@@ -155,7 +196,7 @@ def main():
         
             obsi = Observable(filei)
             indicatorHASH.add_observable(obsi)
-            print "SHA256: " + ioc
+            if (VERBOSE): print "SHA256: " + ioc 
             notfound = 0
 
             # STIX 2
@@ -171,7 +212,7 @@ def main():
         
             obsj = Observable(filej)
             indicatorHASH.add_observable(obsj)
-            print "MD5: " + ioc
+            if (VERBOSE): print "MD5: " + ioc
             notfound = 0
 
             # STIX 2
@@ -187,7 +228,7 @@ def main():
         
             obsk = Observable(filek)
             indicatorHASH.add_observable(obsk)
-            print "SHA1: " + ioc
+            if (VERBOSE): print "SHA1: " + ioc
             notfound = 0
 
             # STIX 2
@@ -203,7 +244,7 @@ def main():
 
             obsu = Observable(url)
             indiDOMAIN.add_observable(obsu)
-            print "DOMAIN: " + ioc
+            if (VERBOSE): print "DOMAIN: " + ioc
             notfound = 0
 
             # STIX 2
@@ -219,7 +260,7 @@ def main():
             
             obsu = Observable(url)
             indiURL.add_observable(obsu)
-            print "URL: " + ioc
+            if (VERBOSE): print "URL: " + ioc
             notfound = 0
 
             # STIX 2
@@ -233,7 +274,7 @@ def main():
         
             obsu = Observable(ip)
             indiIP.add_observable(obsu)
-            print "IP: " + ioc
+            if (VERBOSE): print "IP: " + ioc
             notfound = 0
 
             # STIX 2
@@ -248,7 +289,7 @@ def main():
             obsu = Observable(email)
             indiEMAIL.add_observable(obsu)
 
-            print "Email: " + ioc
+            if (VERBOSE): print "Email: " + ioc
             notfound = 0
 
             # STIX 2
@@ -271,7 +312,7 @@ def main():
         stix2_sha256 = stix2_sha256[:-4]
 
         indicator_SHA256 = stix2.Indicator(
-            name=MyTITLE + " - SHA256",
+            name=TITLE + " - SHA256",
             created = timestamp,
             modified = timestamp,
             description = DESCRIPTION,
@@ -288,7 +329,7 @@ def main():
         stix2_md5 = stix2_md5[:-4]
 
         indicator_MD5 = stix2.Indicator(
-            name=MyTITLE + " - MD5",
+            name=TITLE + " - MD5",
             created = timestamp,
             modified = timestamp,
             description = DESCRIPTION,
@@ -305,7 +346,7 @@ def main():
         stix2_sha1 = stix2_sha1[:-4]
 
         indicator_SHA1 = stix2.Indicator(
-            name=MyTITLE + " - SHA1",
+            name=TITLE + " - SHA1",
             created = timestamp,
             modified = timestamp,
             description = DESCRIPTION,
@@ -322,7 +363,7 @@ def main():
         stix2_domain = stix2_domain[:-4]
         
         indicator_DOMAINS = stix2.Indicator(
-            name=MyTITLE + " - DOMAINS",
+            name=TITLE + " - DOMAINS",
             created = timestamp,
             modified=timestamp,
             description=DESCRIPTION,
@@ -339,7 +380,7 @@ def main():
         stix2_url = stix2_url[:-4]
 
         indicator_URLS = stix2.Indicator(
-            name=MyTITLE + " - URL",
+            name=TITLE + " - URL",
             created = timestamp,
             modified=timestamp,
             description=DESCRIPTION,
@@ -356,7 +397,7 @@ def main():
         stix2_ip = stix2_ip[:-4]
     
         indicator_IPS = stix2.Indicator(
-            name=MyTITLE + " - IPS",
+            name=TITLE + " - IPS",
             created = timestamp,
             modified=timestamp,
             description=DESCRIPTION,
@@ -373,7 +414,7 @@ def main():
         stix2_email = stix2_email[:-4]
 
         indicator_EMAILS = stix2.Indicator(
-            name=MyTITLE + " - EMAILS",
+            name=TITLE + " - EMAILS",
             created = timestamp,
             modified=timestamp,
             description=DESCRIPTION,
@@ -391,7 +432,7 @@ def main():
     ########################
     # save to STIX 1.2 file
     print 
-    print "Writing STIX package: package.stix"
+    print "Writing STIX 1.2 package: package.stix"
     f = open ("package.stix", "w")
     f.write (wrapper.to_xml())
     f.close ()
@@ -405,5 +446,6 @@ def main():
     print bundle
 
 if __name__ == '__main__':
-    main()
+    main(sys.argv[1:])
     print
+    sys.exit(0)
