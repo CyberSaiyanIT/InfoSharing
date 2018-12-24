@@ -58,20 +58,23 @@ def main(argv):
 
     # File degli IoC
     IOCFILE = "CS-ioc.txt"
+
+    # Prefisso STIX output files STIX 1.2 e STIX 2
+    OUTFILEPREFIX = "package"
     ######################################################################
 
     VERBOSE = 0
 
     # Parse ARGV[]
     try:
-        opts, args = getopt.getopt(argv, "ht:d:i:v")
+        opts, args = getopt.getopt(argv, "ht:d:i:f:o:v")
     except getopt.GetoptError:
-      print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE]'
+      print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]'
       sys.exit(2)
 
     for opt, arg in opts:
         if opt == '-h':
-            print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE]'
+            print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PROEFIX]'
             sys.exit()
         elif opt == '-t':
             TITLE = arg
@@ -81,6 +84,8 @@ def main(argv):
             IDENTITY = arg
         elif opt == '-f':
             IOCFILE = arg
+        elif opt == '-o':
+            OUTFILEPREFIX = arg
         elif opt == '-v':
             VERBOSE = 1
 
@@ -432,16 +437,16 @@ def main(argv):
     ########################
     # save to STIX 1.2 file
     print 
-    print "Writing STIX 1.2 package: package.stix"
-    f = open ("package.stix", "w")
+    print "Writing STIX 1.2 package: " + OUTFILEPREFIX + ".stix"
+    f = open (OUTFILEPREFIX + ".stix", "w")
     f.write (wrapper.to_xml())
     f.close ()
     
 
     ########################
     # save to STIX 2 file
-    print "Writing STIX 2 package: package.stix2"
-    g = open ("package.stix2", "w")
+    print "Writing STIX 2 package: " + OUTFILEPREFIX + ".stix2"
+    g = open (OUTFILEPREFIX + ".stix2", "w")
     sys.stdout = g
     print bundle
 
