@@ -192,7 +192,7 @@ def main(argv):
         notfound = 1
         
         # sha256
-        p = re.compile(r"^[0-9a-f]{64}$", re.IGNORECASE)
+        p =  re.compile(r"^[a-fA-F0-9]{64}(:.+)?$")
         m = p.match(ioc)
         if m and notfound:
             # STIX 1.2
@@ -208,7 +208,7 @@ def main(argv):
             pattern_sha256.append("[file:hashes.'SHA-256' = '" + ioc +"'] OR ")
 
         #md5
-        p = re.compile(r"^[0-9a-f]{32}$", re.IGNORECASE)
+        p = re.compile(r"^[a-fA-F0-9]{40}(:.+)?$")
         m = p.match(ioc)
         if m and notfound:
             # STIX 1.2
@@ -224,7 +224,7 @@ def main(argv):
             pattern_md5.append("[file:hashes.'MD5' = '" + ioc +"'] OR ")
 
         #sha1
-        p = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
+        p = re.compile(r"^[a-fA-F0-9]{32}(:.+)?$")
         m = p.match(ioc)
         if m and notfound:
             # STIX 1.2
