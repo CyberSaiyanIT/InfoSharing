@@ -6,12 +6,17 @@ Lo script python _CS\_build\_stix-from\_files.py_ legge un file di testo contene
 Per poter utilizzare lo script è necessario installare le seguenti dipendenze (testato su Ubuntu >= 18.04)
 ```
 # cabby 
-pip install cabby
+sudo pip install cabby
+
+mkdir src
+cd src/
 
 # python-cybox
 git clone https://github.com/CybOXProject/python-cybox.git
 cd python-cybox/
 sudo python setup.py install
+
+cd ..
 
 # python-stix
 git clone https://github.com/STIXProject/python-stix.git
@@ -19,11 +24,11 @@ cd python-stix
 sudo python setup.py install 
 
 # stix
-pip install stix
-pip install stix2
+sudo pip install stix #già installato come dipendenza cabby, just for...
+sudo pip install stix2
 
 # validators
-pip install validators
+sudo pip install validators
 ```
 
 Prima di eseguire lo script effettuare le seguenti operazioni
