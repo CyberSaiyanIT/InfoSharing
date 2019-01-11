@@ -61,6 +61,9 @@ def main(argv):
 
     # Prefisso STIX output files STIX 1.2 e STIX 2
     OUTFILEPREFIX = "package"
+    
+    # Short Description - UNUSED
+    SHORT = "unused"
     ######################################################################
 
     VERBOSE = 0
@@ -112,8 +115,6 @@ def main(argv):
 
     NAMESPACE = Namespace("https://infosharing.cybersaiyan.it", "CYBERSAIYAN")
     set_id_namespace(NAMESPACE)
-
-    SHORT = timestamp
 
     wrapper = STIXPackage()
     
