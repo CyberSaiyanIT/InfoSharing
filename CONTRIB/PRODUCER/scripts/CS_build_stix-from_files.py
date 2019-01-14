@@ -77,7 +77,7 @@ def main(argv):
 
     for opt, arg in opts:
         if opt == '-h':
-            print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PROEFIX]'
+            print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]'
             sys.exit()
         elif opt == '-t':
             TITLE = arg
