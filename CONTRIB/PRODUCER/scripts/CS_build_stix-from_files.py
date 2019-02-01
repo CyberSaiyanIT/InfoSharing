@@ -3,7 +3,7 @@
 
 import sys
 import getopt
-import os.path
+import os
 import time
 import datetime
 import validators
@@ -44,65 +44,66 @@ def loaddata(file_in):
 
 def main(argv):
 
-    ######################################################################
+   ######################################################################
     # Se non impostati da command line vengono utilizzati i seguenti valori per TITLE, DESCRIPTION, IDENTITY
     # Il title e' ID univoco della minaccia (es. Cobalt / Danabot / APT28)
-    TITLE = "Test"
+    TITLE = raw_input("Insert Title Ioc:")
 
     # La description strutturiamola come segue
     # <IOC PRODUCER> - <Descrizione della minaccia/campagna> - <URL (if any)>
-    DESCRIPTION = "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it"
+    DESCRIPTION = raw_input("Insert Decription:")
 
-    # La sorgente che ha generato l'IoC con riferimento a Cyber Saiyan Community 
-    IDENTITY = "Cyber Saiyan Community"
+    # La sorgente che ha generato l'IoC con riferimento a Cyber Saiyan Community
+    IDENTITY = raw_input("Insert User Identity:")
 
     # File degli IoC
-    IOCFILE = "CS-ioc.txt"
+    IOCFILE = raw_input("Add IoC Source File:")
 
     # Prefisso STIX output files STIX 1.2 e STIX 2
     OUTFILEPREFIX = "package"
-    
+
     # Short Description - UNUSED
-    SHORT = "unused"
+    #SHORT = "Emotet"
     ######################################################################
 
     VERBOSE = 0
 
     # Parse ARGV[]
-    try:
-        opts, args = getopt.getopt(argv, "ht:d:i:f:o:v")
-    except getopt.GetoptError:
-      print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]'
-      sys.exit(2)
+    #try:
+    #    opts, args = getopt.getopt(argv, "ht:d:i:f:o:v")
+    #except getopt.GetoptError:
+    #  print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]'
+    #  sys.exit(2)
 
-    for opt, arg in opts:
-        if opt == '-h':
-            print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]'
-            sys.exit()
-        elif opt == '-t':
-            TITLE = arg
-        elif opt == '-d':
-            DESCRIPTION = arg
-        elif opt == '-i':
-            IDENTITY = arg
-        elif opt == '-f':
-            IOCFILE = arg
-        elif opt == '-o':
-            OUTFILEPREFIX = arg
-        elif opt == '-v':
-            VERBOSE = 1
+    #for opt, arg in opts:
+    #    if opt == '-h':
+    #        print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]'
+    #        sys.exit()
+    #    elif opt == '-t':
+    #        TITLE = arg
+    #    elif opt == '-d':
+    #        DESCRIPTION = arg
+    #    elif opt == '-i':
+    #        IDENTITY = arg
+    #    elif opt == '-f':
+    #        IOCFILE = arg
+    #    elif opt == '-o':
+    #        OUTFILEPREFIX = arg
+    #    elif opt == '-v':
+    #        VERBOSE = 1
+
 
     # UTF8 encode
     TITLE = TITLE.encode('utf8')
     DESCRIPTION = DESCRIPTION.encode('utf8')
     IDENTITY = IDENTITY.encode('utf8')
-    
-    print "---------------------"
-    print "TITLE: " + TITLE
-    print "DESCRIPTION: " + DESCRIPTION
-    print "IDENTITY: " + IDENTITY
-    print "IOC FILE: " + IOCFILE
-    print "---------------------"
+
+    print "Stix output generation in progress...."
+    #print (TITLE) #"TITLE: " + TITLE
+    #print (DESCRIPTION) #"DESCRIPTION: " + DESCRIPTION
+    #print (IDENTITY) #"IDENTITY: " + IDENTITY
+    #print (IOCFILE) #"IOC FILE: " + IOCFILE
+    #print "---------------------"
 
     ########################
     # Commond data
