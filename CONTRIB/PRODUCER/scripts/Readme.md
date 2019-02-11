@@ -35,7 +35,7 @@ Prima di eseguire lo script effettuare le seguenti operazioni
 * nel file _CS\_build\_stix-from\_files.py_ aggiornare le variabili MyTITLE, DESCRIPTION, IDENTITY
 * fare un clear del file _CS-ioc.txt_ ```~$ > CS-ioc.txt```
 * inserire gli IoC supportati (sha256, sha1, md5, domain, ipv4, url) nel file _CS-ioc.txt_. Lo script parsa il file linea per linea ed usa delle espressioni regolari per validare gli IoC; commenti o IoC malformati vengono ignorati
-* eseguire lo script  ```python -W ignore CS_build_stix.py```
+* eseguire lo script  ```python -W ignore CS_build_stix-from_files.py```
 
 Dopo l'esecuzione sono generati due file (esempi nella dir)
 * _package.stix_: file STIX 1.2 [XML](/CONTRIB/PRODUCER/scripts/package.stix)
@@ -43,7 +43,7 @@ Dopo l'esecuzione sono generati due file (esempi nella dir)
 
 ## PUSH STIX 1.2
 Dopo aver creato i file STIX è necessario fare il PUSH (via Cabby in questo esempio) del file STIX 1.2 (unico formato supportato al momento) sulla rete STIX/TAXII della community Cyber Saiyan.
-Di seguito il comando da eseguire che richiesde una password (il PUSH è autenticato); nel caso in cui si volesse contribuire unirsi al [gruppo Telegram](https://t.me/joinchat/Av4DDFjVkRC60YH_Lq-WVw)
+Di seguito il comando da eseguire che richiede una password (il PUSH è autenticato); nel caso in cui si volesse contribuire unirsi al [gruppo Telegram](https://t.me/joinchat/Av4DDFjVkRC60YH_Lq-WVw)
 ```
 taxii-push --discovery https://infosharing.cybersaiyan.it:9000/services/discovery --dest community --username community --password <TO-BE-SENT> --content-file package.stix
 ```
