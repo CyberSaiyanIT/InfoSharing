@@ -189,6 +189,7 @@ def main(argv):
     ioc = loaddata(IOCFILE)
 
     if (VERBOSE): print "Reading IoC file " + IOCFILE + "..."
+    ioccount = 0
     for idx, ioc in enumerate(ioc):
         notfound = 1
         
@@ -204,6 +205,7 @@ def main(argv):
             indicatorHASH.add_observable(obsi)
             if (VERBOSE): print "SHA256: " + ioc 
             notfound = 0
+            ioccount+=1
 
             # STIX 2
             pattern_sha256.append("[file:hashes.'SHA-256' = '" + ioc +"'] OR ")
@@ -220,6 +222,7 @@ def main(argv):
             indicatorHASH.add_observable(obsj)
             if (VERBOSE): print "MD5: " + ioc
             notfound = 0
+            ioccount+=1
 
             # STIX 2
             pattern_md5.append("[file:hashes.'MD5' = '" + ioc +"'] OR ")
@@ -236,6 +239,7 @@ def main(argv):
             indicatorHASH.add_observable(obsk)
             if (VERBOSE): print "SHA1: " + ioc
             notfound = 0
+            ioccount+=1
 
             # STIX 2
             pattern_sha1.append("[file:hashes.'SHA1' = '" + ioc +"'] OR ")
@@ -252,6 +256,7 @@ def main(argv):
             indiDOMAIN.add_observable(obsu)
             if (VERBOSE): print "DOMAIN: " + ioc
             notfound = 0
+            ioccount+=1
 
             # STIX 2
             pattern_domain.append("[domain-name:value = '" + ioc +"'] OR ")
@@ -268,6 +273,7 @@ def main(argv):
             indiURL.add_observable(obsu)
             if (VERBOSE): print "URL: " + ioc
             notfound = 0
+            ioccount+=1
 
             # STIX 2
             pattern_url.append("[url:value = '" + ioc +"'] OR ")
@@ -282,6 +288,7 @@ def main(argv):
             indiIP.add_observable(obsu)
             if (VERBOSE): print "IP: " + ioc
             notfound = 0
+            ioccount+=1
 
             # STIX 2
             pattern_ip.append("[ipv4-addr:value = '" + ioc +"'] OR ")
@@ -297,6 +304,7 @@ def main(argv):
 
             if (VERBOSE): print "Email: " + ioc
             notfound = 0
+            ioccount+=1
 
             # STIX 2
             pattern_email.append("[email-message:from_ref.value = '" + ioc +"'] OR ")
@@ -434,22 +442,24 @@ def main(argv):
 
     # creo il bunble STIX 2
     bundle = stix2.Bundle(objects=bundle_objects)
-   
-    ########################
-    # save to STIX 1.2 file
-    print 
-    print "Writing STIX 1.2 package: " + OUTFILEPREFIX + ".stix"
-    f = open (OUTFILEPREFIX + ".stix", "w")
-    f.write (wrapper.to_xml())
-    f.close ()
-    
 
-    ########################
-    # save to STIX 2 file
-    print "Writing STIX 2 package: " + OUTFILEPREFIX + ".stix2"
-    g = open (OUTFILEPREFIX + ".stix2", "w")
-    sys.stdout = g
-    print bundle
+    if (ioccount>0):
+        ########################
+        # save to STIX 1.2 file
+        print 
+        print "Writing STIX 1.2 package: " + OUTFILEPREFIX + ".stix"
+        f = open (OUTFILEPREFIX + ".stix", "w")
+        f.write (wrapper.to_xml())
+        f.close ()
+
+        ########################
+        # save to STIX 2 file
+        print "Writing STIX 2 package: " + OUTFILEPREFIX + ".stix2"
+        g = open (OUTFILEPREFIX + ".stix2", "w")
+        sys.stdout = g
+        print bundle
+    else:
+        print "No IoC found"
 
 if __name__ == '__main__':
     main(sys.argv[1:])
