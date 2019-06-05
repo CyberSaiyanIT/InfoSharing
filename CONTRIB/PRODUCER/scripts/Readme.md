@@ -32,7 +32,7 @@ sudo pip install validators
 ```
 
 Prima di eseguire lo script effettuare le seguenti operazioni
-* nel file _CS\_build\_stix-from\_files.py_ aggiornare le variabili MyTITLE, DESCRIPTION, IDENTITY
+* nel file _CS\_build\_stix-from\_files.py_ aggiornare le variabili TITLE, DESCRIPTION, IDENTITY
 * fare un clear del file _CS-ioc.txt_ ```~$ > CS-ioc.txt```
 * inserire gli IoC supportati (sha256, sha1, md5, domain, ipv4, url) nel file _CS-ioc.txt_. Lo script parsa il file linea per linea ed usa delle espressioni regolari per validare gli IoC; commenti o IoC malformati vengono ignorati
 * eseguire lo script  ```python -W ignore CS_build_stix-from_files.py```
