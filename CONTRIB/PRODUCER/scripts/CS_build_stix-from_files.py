@@ -120,7 +120,7 @@ def main(argv):
     marking_specification = MarkingSpecification()
     marking_specification.controlled_structure = "//node() | //@*"
     tlp = TLPMarkingStructure()
-    tlp.color = "WHITE"
+    tlp.color = "white"
     marking_specification.marking_structures.append(tlp)
 
     handling = Marking()
@@ -168,12 +168,7 @@ def main(argv):
     pattern_email = []
 
     # Marking
-    marking_def_white = stix2.MarkingDefinition(
-        definition_type="tlp",
-        definition={
-            "tlp": "WHITE"
-        }
-    )
+    marking_def_white = stix2.TLP_WHITE
 
     # campagna
     # [TODO] aggiungere tutti i campi dello STIX 1.2 (es. IDENTITY)
