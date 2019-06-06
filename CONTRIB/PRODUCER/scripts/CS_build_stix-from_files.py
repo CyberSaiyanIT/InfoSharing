@@ -49,14 +49,14 @@ def main(argv):
     ######################################################################
     # Se non impostati da command line vengono utilizzati i seguenti valori per TITLE, DESCRIPTION, IDENTITY
     # Il title e' ID univoco della minaccia (es. Cobalt / Danabot / APT28)
-    TITLE = "Test"
+    TITLE = "LokiBot Italy - Payment Copy"
 
     # La description strutturiamola come segue
     # <IOC PRODUCER> - <Descrizione della minaccia/campagna> - <URL (if any)>
-    DESCRIPTION = "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it"
+    DESCRIPTION = "Test Sharing"
 
     # La sorgente che ha generato l'IoC con riferimento a Cyber Saiyan Community 
-    IDENTITY = "Cyber Saiyan Community"
+    IDENTITY = "D3Lab"
 
     # File degli IoC
     IOCFILE = "CS-ioc.txt"
