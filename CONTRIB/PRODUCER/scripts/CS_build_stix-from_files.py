@@ -75,25 +75,25 @@ def main(argv):
         opts, args = getopt.getopt(argv, "ht:d:i:f:o:v")
     except getopt.GetoptError:
         print(
-            'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]')
+            "CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]")
         sys.exit(2)
 
     for opt, arg in opts:
-        if opt == '-h':
+        if opt == "-h":
             print(
-                'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]')
+                "CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]")
             sys.exit()
-        elif opt == '-t':
+        elif opt == "-t":
             TITLE = arg
-        elif opt == '-d':
+        elif opt == "-d":
             DESCRIPTION = arg
-        elif opt == '-i':
+        elif opt == "-i":
             IDENTITY = arg
-        elif opt == '-f':
+        elif opt == "-f":
             IOCFILE = arg
-        elif opt == '-o':
+        elif opt == "-o":
             OUTFILEPREFIX = arg
-        elif opt == '-v':
+        elif opt == "-v":
             VERBOSE = 1
 
     print("---------------------")
@@ -105,7 +105,7 @@ def main(argv):
 
     ########################
     # Commond data
-    timestamp = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
+    timestamp = datetime.datetime.fromtimestamp(time.time()).strftime("%Y-%m-%d %H:%M:%S")
 
     ########################
     # Build STIX 1.2 file
@@ -127,9 +127,9 @@ def main(argv):
     handling.add_marking(marking_specification)
 
     wrapper.stix_header = STIXHeader(information_source=info_src,
-                                     title=TITLE.encode(encoding='UTF-8', errors='replace'),
-                                     description=DESCRIPTION.encode(encoding='UTF-8', errors='replace'),
-                                     short_description=SHORT.encode(encoding='UTF-8', errors='replace'))
+                                     title=TITLE.encode(encoding="UTF-8", errors="replace"),
+                                     description=DESCRIPTION.encode(encoding="UTF-8", errors="replace"),
+                                     short_description=SHORT.encode(encoding="UTF-8", errors="replace"))
     wrapper.stix_header.handling = handling
 
     # HASH indicators
@@ -336,7 +336,7 @@ def main(argv):
             pattern=stix2_sha256,
             object_marking_refs=[marking_def_white]
         )
-        relationship_indicator_SHA256 = stix2.Relationship(indicator_SHA256, 'indicates', campaign_MAIN)
+        relationship_indicator_SHA256 = stix2.Relationship(indicator_SHA256, "indicates", campaign_MAIN)
         bundle_objects.append(indicator_SHA256)
         bundle_objects.append(relationship_indicator_SHA256)
 
@@ -353,7 +353,7 @@ def main(argv):
             pattern=stix2_md5,
             object_marking_refs=[marking_def_white]
         )
-        relationship_indicator_MD5 = stix2.Relationship(indicator_MD5, 'indicates', campaign_MAIN)
+        relationship_indicator_MD5 = stix2.Relationship(indicator_MD5, "indicates", campaign_MAIN)
         bundle_objects.append(indicator_MD5)
         bundle_objects.append(relationship_indicator_MD5)
 
@@ -370,7 +370,7 @@ def main(argv):
             pattern=stix2_sha1,
             object_marking_refs=[marking_def_white]
         )
-        relationship_indicator_SHA1 = stix2.Relationship(indicator_SHA1, 'indicates', campaign_MAIN)
+        relationship_indicator_SHA1 = stix2.Relationship(indicator_SHA1, "indicates", campaign_MAIN)
         bundle_objects.append(indicator_SHA1)
         bundle_objects.append(relationship_indicator_SHA1)
 
@@ -387,7 +387,7 @@ def main(argv):
             pattern=stix2_domain,
             object_marking_refs=[marking_def_white]
         )
-        relationship_indicator_DOMAINS = stix2.Relationship(indicator_DOMAINS, 'indicates', campaign_MAIN)
+        relationship_indicator_DOMAINS = stix2.Relationship(indicator_DOMAINS, "indicates", campaign_MAIN)
         bundle_objects.append(indicator_DOMAINS)
         bundle_objects.append(relationship_indicator_DOMAINS)
 
@@ -404,7 +404,7 @@ def main(argv):
             pattern=stix2_url,
             object_marking_refs=[marking_def_white]
         )
-        relationship_indicator_URLS = stix2.Relationship(indicator_URLS, 'indicates', campaign_MAIN)
+        relationship_indicator_URLS = stix2.Relationship(indicator_URLS, "indicates", campaign_MAIN)
         bundle_objects.append(indicator_URLS)
         bundle_objects.append(relationship_indicator_URLS)
 
@@ -421,7 +421,7 @@ def main(argv):
             pattern=stix2_ip,
             object_marking_refs=[marking_def_white]
         )
-        relationship_indicator_IPS = stix2.Relationship(indicator_IPS, 'indicates', campaign_MAIN)
+        relationship_indicator_IPS = stix2.Relationship(indicator_IPS, "indicates", campaign_MAIN)
         bundle_objects.append(indicator_IPS)
         bundle_objects.append(relationship_indicator_IPS)
 
@@ -438,7 +438,7 @@ def main(argv):
             pattern=stix2_email,
             object_marking_refs=[marking_def_white]
         )
-        relationship_indicator_EMAILS = stix2.Relationship(indicator_EMAILS, 'indicates', campaign_MAIN)
+        relationship_indicator_EMAILS = stix2.Relationship(indicator_EMAILS, "indicates", campaign_MAIN)
         bundle_objects.append(indicator_EMAILS)
         bundle_objects.append(relationship_indicator_EMAILS)
 
@@ -463,6 +463,6 @@ def main(argv):
         print("No IoC found")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(sys.argv[1:])
     sys.exit(0)
