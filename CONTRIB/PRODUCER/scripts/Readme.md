@@ -4,7 +4,7 @@
 Lo script python _CS\_build\_stix-from\_files.py_ legge un file di testo contenente gli IoC (sha256, sha1, md5, domain, url, ip, email) e genera i file STIX 1.2 (XML) e STIX 2 (JSON) da iniettare sulla rete STIX/TAXII della community Cyber Saiyan (al momento la rete supporta esclusivamente il formato STIX 1.2)
 
 Per poter utilizzare lo script è necessario installare le seguenti dipendenze (testato su Ubuntu Server LTS 16.04, 18.04 e MacOS). 
-È preferisibile un ambiente virtuale env.
+È preferibile un ambiente virtuale env.
 
 ```
 # cabby 
