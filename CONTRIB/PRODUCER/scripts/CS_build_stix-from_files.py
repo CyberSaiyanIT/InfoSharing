@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # Informazioni su installazione ed utilizzo https://github.com/CyberSaiyanIT/InfoSharing/tree/master/CONTRIB/PRODUCER/scripts
 
 import sys
@@ -10,6 +10,7 @@ import validators
 import re
 
 import warnings
+
 if not sys.warnoptions:
     warnings.simplefilter("ignore")
 
@@ -29,21 +30,22 @@ from cybox.objects.uri_object import URI
 from cybox.objects.address_object import Address
 from cybox.objects.email_message_object import EmailAddress
 
-import stix2 
+import stix2
+
 
 def loaddata(file_in):
     if os.path.exists(file_in) and os.path.getsize(file_in) > 0:
         with open(file_in) as data_file:
             try:
                 data = data_file.readlines()
-                return [x.strip() for x in data] 
-            except ValueError, error:
+                return [x.strip() for x in data]
+            except:
                 return []
     else:
         return []
 
-def main(argv):
 
+def main(argv):
     ######################################################################
     # Se non impostati da command line vengono utilizzati i seguenti valori per TITLE, DESCRIPTION, IDENTITY
     # Il title e' ID univoco della minaccia (es. Cobalt / Danabot / APT28)
@@ -61,7 +63,7 @@ def main(argv):
 
     # Prefisso STIX output files STIX 1.2 e STIX 2
     OUTFILEPREFIX = "package"
-    
+
     # Short Description - UNUSED
     SHORT = "unused"
     ######################################################################
@@ -72,12 +74,14 @@ def main(argv):
     try:
         opts, args = getopt.getopt(argv, "ht:d:i:f:o:v")
     except getopt.GetoptError:
-      print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]'
-      sys.exit(2)
+        print(
+            'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]')
+        sys.exit(2)
 
     for opt, arg in opts:
         if opt == '-h':
-            print 'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]'
+            print(
+                'CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]')
             sys.exit()
         elif opt == '-t':
             TITLE = arg
@@ -92,17 +96,12 @@ def main(argv):
         elif opt == '-v':
             VERBOSE = 1
 
-    # UTF8 encode
-    TITLE = TITLE.encode('utf8')
-    DESCRIPTION = DESCRIPTION.encode('utf8')
-    IDENTITY = IDENTITY.encode('utf8')
-    
-    print "---------------------"
-    print "TITLE: " + TITLE
-    print "DESCRIPTION: " + DESCRIPTION
-    print "IDENTITY: " + IDENTITY
-    print "IOC FILE: " + IOCFILE
-    print "---------------------"
+    print("---------------------")
+    print("TITLE: " + TITLE)
+    print("DESCRIPTION: " + DESCRIPTION)
+    print("IDENTITY: " + IDENTITY)
+    print("IOC FILE: " + IOCFILE)
+    print("---------------------")
 
     ########################
     # Commond data
@@ -117,24 +116,27 @@ def main(argv):
     set_id_namespace(NAMESPACE)
 
     wrapper = STIXPackage()
-    
+
     marking_specification = MarkingSpecification()
     marking_specification.controlled_structure = "//node() | //@*"
     tlp = TLPMarkingStructure()
     tlp.color = "WHITE"
     marking_specification.marking_structures.append(tlp)
-    
+
     handling = Marking()
     handling.add_marking(marking_specification)
-    
-    wrapper.stix_header = STIXHeader(information_source=info_src, title=TITLE.encode(encoding='UTF-8', errors='replace'), description=DESCRIPTION.encode(encoding='UTF-8', errors='replace'), short_description=SHORT.encode(encoding='UTF-8', errors='replace'))
+
+    wrapper.stix_header = STIXHeader(information_source=info_src,
+                                     title=TITLE.encode(encoding='UTF-8', errors='replace'),
+                                     description=DESCRIPTION.encode(encoding='UTF-8', errors='replace'),
+                                     short_description=SHORT.encode(encoding='UTF-8', errors='replace'))
     wrapper.stix_header.handling = handling
-    
+
     # HASH indicators
     indicatorHASH = Indicator()
     indicatorHASH.title = TITLE + " - HASH"
     indicatorHASH.add_indicator_type("File Hash Watchlist")
-    
+
     # DOMAIN indicators
     indiDOMAIN = Indicator()
     indiDOMAIN.title = TITLE + " - DOMAIN"
@@ -167,10 +169,10 @@ def main(argv):
 
     # Marking
     marking_def_white = stix2.MarkingDefinition(
-            definition_type="tlp",
-            definition={
-                "tlp": "WHITE"
-            }
+        definition_type="tlp",
+        definition={
+            "tlp": "WHITE"
+        }
     )
 
     # campagna
@@ -188,11 +190,11 @@ def main(argv):
     # Read IoC file
     ioc = loaddata(IOCFILE)
 
-    if (VERBOSE): print "Reading IoC file " + IOCFILE + "..."
+    if (VERBOSE): print("Reading IoC file " + IOCFILE + "...")
     ioccount = 0
     for idx, ioc in enumerate(ioc):
         notfound = 1
-        
+
         # sha256
         p = re.compile(r"^[0-9a-f]{64}$", re.IGNORECASE)
         m = p.match(ioc)
@@ -200,100 +202,100 @@ def main(argv):
             # STIX 1.2
             filei = File()
             filei.add_hash(Hash(ioc))
-        
+
             obsi = Observable(filei)
             indicatorHASH.add_observable(obsi)
-            if (VERBOSE): print "SHA256: " + ioc 
+            if (VERBOSE): print("SHA256: " + ioc)
             notfound = 0
-            ioccount+=1
+            ioccount += 1
 
             # STIX 2
-            pattern_sha256.append("[file:hashes.'SHA-256' = '" + ioc +"'] OR ")
+            pattern_sha256.append("[file:hashes.'SHA-256' = '" + ioc + "'] OR ")
 
-        #md5
+        # md5
         p = re.compile(r"^[0-9a-f]{32}$", re.IGNORECASE)
         m = p.match(ioc)
         if m and notfound:
             # STIX 1.2
             filej = File()
             filej.add_hash(Hash(ioc))
-        
+
             obsj = Observable(filej)
             indicatorHASH.add_observable(obsj)
-            if (VERBOSE): print "MD5: " + ioc
+            if (VERBOSE): print("MD5: " + ioc)
             notfound = 0
-            ioccount+=1
+            ioccount += 1
 
             # STIX 2
-            pattern_md5.append("[file:hashes.'MD5' = '" + ioc +"'] OR ")
+            pattern_md5.append("[file:hashes.'MD5' = '" + ioc + "'] OR ")
 
-        #sha1
+        # sha1
         p = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
         m = p.match(ioc)
         if m and notfound:
             # STIX 1.2
             filek = File()
             filek.add_hash(Hash(ioc))
-        
+
             obsk = Observable(filek)
             indicatorHASH.add_observable(obsk)
-            if (VERBOSE): print "SHA1: " + ioc
+            if (VERBOSE): print("SHA1: " + ioc)
             notfound = 0
-            ioccount+=1
+            ioccount += 1
 
             # STIX 2
-            pattern_sha1.append("[file:hashes.'SHA1' = '" + ioc +"'] OR ")
+            pattern_sha1.append("[file:hashes.'SHA1' = '" + ioc + "'] OR ")
 
-        #domains
+        # domains
         if validators.domain(ioc) and notfound:
             # STIX 1.2
             url = URI()
             url.value = ioc
-            url.type_ =  URI.TYPE_DOMAIN
+            url.type_ = URI.TYPE_DOMAIN
             url.condition = "Equals"
 
             obsu = Observable(url)
             indiDOMAIN.add_observable(obsu)
-            if (VERBOSE): print "DOMAIN: " + ioc
+            if (VERBOSE): print("DOMAIN: " + ioc)
             notfound = 0
-            ioccount+=1
+            ioccount += 1
 
             # STIX 2
-            pattern_domain.append("[domain-name:value = '" + ioc +"'] OR ")
+            pattern_domain.append("[domain-name:value = '" + ioc + "'] OR ")
 
-        #url
+        # url
         if validators.url(ioc) and notfound:
             # STIX 1.2
             url = URI()
             url.value = ioc
-            url.type_ =  URI.TYPE_URL
+            url.type_ = URI.TYPE_URL
             url.condition = "Equals"
-            
+
             obsu = Observable(url)
             indiURL.add_observable(obsu)
-            if (VERBOSE): print "URL: " + ioc
+            if (VERBOSE): print("URL: " + ioc)
             notfound = 0
-            ioccount+=1
+            ioccount += 1
 
             # STIX 2
-            pattern_url.append("[url:value = '" + ioc +"'] OR ")
+            pattern_url.append("[url:value = '" + ioc + "'] OR ")
 
-        #ip
+        # ip
         if validators.ipv4(ioc) and notfound:
             # STIX 1.2
             ip = Address()
             ip.address_value = ioc
-        
+
             obsu = Observable(ip)
             indiIP.add_observable(obsu)
-            if (VERBOSE): print "IP: " + ioc
+            if (VERBOSE): print("IP: " + ioc)
             notfound = 0
-            ioccount+=1
+            ioccount += 1
 
             # STIX 2
-            pattern_ip.append("[ipv4-addr:value = '" + ioc +"'] OR ")
+            pattern_ip.append("[ipv4-addr:value = '" + ioc + "'] OR ")
 
-        #email
+        # email
         if validators.email(ioc) and notfound:
             # STIX 1.2
             email = EmailAddress()
@@ -302,12 +304,12 @@ def main(argv):
             obsu = Observable(email)
             indiEMAIL.add_observable(obsu)
 
-            if (VERBOSE): print "Email: " + ioc
+            if (VERBOSE): print("Email: " + ioc)
             notfound = 0
-            ioccount+=1
+            ioccount += 1
 
             # STIX 2
-            pattern_email.append("[email-message:from_ref.value = '" + ioc +"'] OR ")
+            pattern_email.append("[email-message:from_ref.value = '" + ioc + "'] OR ")
 
     ########################
     # add all indicators to STIX 1.2
@@ -320,120 +322,120 @@ def main(argv):
     ########################
     # prepare for STIX 2
     bundle_objects = [campaign_MAIN, marking_def_white]
-   
-    if len(pattern_sha256)!= 0:
+
+    if len(pattern_sha256) != 0:
         stix2_sha256 = "".join(pattern_sha256)
         stix2_sha256 = stix2_sha256[:-4]
 
         indicator_SHA256 = stix2.Indicator(
             name=TITLE + " - SHA256",
-            created = timestamp,
-            modified = timestamp,
-            description = DESCRIPTION,
+            created=timestamp,
+            modified=timestamp,
+            description=DESCRIPTION,
             labels=["malicious-activity"],
-            pattern= stix2_sha256,
+            pattern=stix2_sha256,
             object_marking_refs=[marking_def_white]
         )
         relationship_indicator_SHA256 = stix2.Relationship(indicator_SHA256, 'indicates', campaign_MAIN)
         bundle_objects.append(indicator_SHA256)
         bundle_objects.append(relationship_indicator_SHA256)
 
-    if len(pattern_md5)!= 0:
+    if len(pattern_md5) != 0:
         stix2_md5 = "".join(pattern_md5)
         stix2_md5 = stix2_md5[:-4]
 
         indicator_MD5 = stix2.Indicator(
             name=TITLE + " - MD5",
-            created = timestamp,
-            modified = timestamp,
-            description = DESCRIPTION,
+            created=timestamp,
+            modified=timestamp,
+            description=DESCRIPTION,
             labels=["malicious-activity"],
-            pattern= stix2_md5,
+            pattern=stix2_md5,
             object_marking_refs=[marking_def_white]
         )
         relationship_indicator_MD5 = stix2.Relationship(indicator_MD5, 'indicates', campaign_MAIN)
         bundle_objects.append(indicator_MD5)
         bundle_objects.append(relationship_indicator_MD5)
 
-    if len(pattern_sha1)!= 0:
+    if len(pattern_sha1) != 0:
         stix2_sha1 = "".join(pattern_sha1)
         stix2_sha1 = stix2_sha1[:-4]
 
         indicator_SHA1 = stix2.Indicator(
             name=TITLE + " - SHA1",
-            created = timestamp,
-            modified = timestamp,
-            description = DESCRIPTION,
+            created=timestamp,
+            modified=timestamp,
+            description=DESCRIPTION,
             labels=["malicious-activity"],
-            pattern= stix2_sha1,
+            pattern=stix2_sha1,
             object_marking_refs=[marking_def_white]
         )
         relationship_indicator_SHA1 = stix2.Relationship(indicator_SHA1, 'indicates', campaign_MAIN)
         bundle_objects.append(indicator_SHA1)
         bundle_objects.append(relationship_indicator_SHA1)
 
-    if len(pattern_domain)!= 0:
+    if len(pattern_domain) != 0:
         stix2_domain = "".join(pattern_domain)
         stix2_domain = stix2_domain[:-4]
-        
+
         indicator_DOMAINS = stix2.Indicator(
             name=TITLE + " - DOMAINS",
-            created = timestamp,
+            created=timestamp,
             modified=timestamp,
             description=DESCRIPTION,
             labels=["malicious-activity"],
-            pattern= stix2_domain,
+            pattern=stix2_domain,
             object_marking_refs=[marking_def_white]
         )
         relationship_indicator_DOMAINS = stix2.Relationship(indicator_DOMAINS, 'indicates', campaign_MAIN)
         bundle_objects.append(indicator_DOMAINS)
         bundle_objects.append(relationship_indicator_DOMAINS)
 
-    if len(pattern_url)!= 0:
+    if len(pattern_url) != 0:
         stix2_url = "".join(pattern_url)
         stix2_url = stix2_url[:-4]
 
         indicator_URLS = stix2.Indicator(
             name=TITLE + " - URL",
-            created = timestamp,
+            created=timestamp,
             modified=timestamp,
             description=DESCRIPTION,
             labels=["malicious-activity"],
-            pattern= stix2_url,
+            pattern=stix2_url,
             object_marking_refs=[marking_def_white]
         )
         relationship_indicator_URLS = stix2.Relationship(indicator_URLS, 'indicates', campaign_MAIN)
         bundle_objects.append(indicator_URLS)
         bundle_objects.append(relationship_indicator_URLS)
 
-    if len(pattern_ip)!= 0:
+    if len(pattern_ip) != 0:
         stix2_ip = "".join(pattern_ip)
         stix2_ip = stix2_ip[:-4]
-    
+
         indicator_IPS = stix2.Indicator(
             name=TITLE + " - IPS",
-            created = timestamp,
+            created=timestamp,
             modified=timestamp,
             description=DESCRIPTION,
             labels=["malicious-activity"],
-            pattern= stix2_ip,
+            pattern=stix2_ip,
             object_marking_refs=[marking_def_white]
         )
         relationship_indicator_IPS = stix2.Relationship(indicator_IPS, 'indicates', campaign_MAIN)
         bundle_objects.append(indicator_IPS)
         bundle_objects.append(relationship_indicator_IPS)
-    
-    if len(pattern_email)!=0:
+
+    if len(pattern_email) != 0:
         stix2_email = "".join(pattern_email)
         stix2_email = stix2_email[:-4]
 
         indicator_EMAILS = stix2.Indicator(
             name=TITLE + " - EMAILS",
-            created = timestamp,
+            created=timestamp,
             modified=timestamp,
             description=DESCRIPTION,
             labels=["malicious-activity"],
-            pattern= stix2_email,
+            pattern=stix2_email,
             object_marking_refs=[marking_def_white]
         )
         relationship_indicator_EMAILS = stix2.Relationship(indicator_EMAILS, 'indicates', campaign_MAIN)
@@ -441,27 +443,26 @@ def main(argv):
         bundle_objects.append(relationship_indicator_EMAILS)
 
     # creo il bunble STIX 2
-    bundle = stix2.Bundle(objects=bundle_objects)
+    bundlestix2 = stix2.Bundle(objects=bundle_objects)
 
-    if (ioccount>0):
+    if (ioccount > 0):
         ########################
         # save to STIX 1.2 file
-        print 
-        print "Writing STIX 1.2 package: " + OUTFILEPREFIX + ".stix"
-        f = open (OUTFILEPREFIX + ".stix", "w")
-        f.write (wrapper.to_xml())
-        f.close ()
+        print("Writing STIX 1.2 package: " + OUTFILEPREFIX + ".stix")
+        f = open(OUTFILEPREFIX + ".stix", "wb")
+        f.write(wrapper.to_xml())
+        f.close()
 
         ########################
         # save to STIX 2 file
-        print "Writing STIX 2 package: " + OUTFILEPREFIX + ".stix2"
-        g = open (OUTFILEPREFIX + ".stix2", "w")
-        sys.stdout = g
-        print bundle
+        print("Writing STIX 2 package: " + OUTFILEPREFIX + ".stix2")
+        g = open(OUTFILEPREFIX + ".stix2", "w")
+        g.write(str(bundlestix2))
+        g.close()
     else:
-        print "No IoC found"
+        print("No IoC found")
+
 
 if __name__ == '__main__':
     main(sys.argv[1:])
-    print
     sys.exit(0)
