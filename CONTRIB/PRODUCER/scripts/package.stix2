@@ -1,202 +1,201 @@
 {
     "type": "bundle",
-    "id": "bundle--28af922a-b2c2-44d2-b5ce-eaacb1219671",
+    "id": "bundle--f4c435fa-1cbf-4340-8919-9760062e108e",
     "spec_version": "2.0",
     "objects": [
         {
             "type": "campaign",
-            "id": "campaign--5919aaea-30b0-4d4c-b532-a652d43ed082",
-            "created": "2018-12-15T10:59:07.000Z",
-            "modified": "2018-12-15T10:59:07.000Z",
+            "id": "campaign--8d908688-dfa2-407a-b8f4-fff462469b88",
+            "created": "2019-06-07T06:42:53.000Z",
+            "modified": "2019-06-07T06:42:53.000Z",
             "name": "Test",
             "description": "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it",
-            "first_seen": "2018-12-15T10:59:07Z",
+            "first_seen": "2019-06-07T06:42:53Z",
             "objective": "TBD"
         },
         {
             "type": "marking-definition",
-            "id": "marking-definition--ec7e9506-8a4b-4e50-9382-4d2ca6a8cba6",
-            "created": "2018-12-15T09:59:07.956Z",
+            "id": "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9",
+            "created": "2017-01-20T00:00:00.000Z",
             "definition_type": "tlp",
             "definition": {
-                "tlp": "WHITE"
+                "tlp": "white"
             }
         },
         {
             "type": "indicator",
-            "id": "indicator--5aa59f29-6bbe-4190-9a88-73d505159384",
-            "created": "2018-12-15T10:59:07.000Z",
-            "modified": "2018-12-15T10:59:07.000Z",
+            "id": "indicator--34e51391-9504-46b2-a04f-cd43f5e494e5",
+            "created": "2019-06-07T06:42:53.000Z",
+            "modified": "2019-06-07T06:42:53.000Z",
             "name": "Test - SHA256",
             "description": "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it",
             "pattern": "[file:hashes.'SHA-256' = '29b42b0ecd874bcad5a5d9d03ed8f8dee320892305312b4898a0b64f9fbde93a'] OR [file:hashes.'SHA-256' = 'ef07905923461ce13a3ca18ef6eb1833a8c8d327d47e9cc8641a2ca3d5ce97f3'] OR [file:hashes.'SHA-256' = 'a7ba2c9def86e54086f0624a73597865a90cb93aa72dec7fdf264f655cf1bb56']",
-            "valid_from": "2018-12-15T09:59:07.964387Z",
+            "valid_from": "2019-06-07T04:42:53.110041Z",
             "labels": [
                 "malicious-activity"
             ],
             "object_marking_refs": [
-                "marking-definition--ec7e9506-8a4b-4e50-9382-4d2ca6a8cba6"
+                "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
             ]
         },
         {
             "type": "relationship",
-            "id": "relationship--23412778-2db1-4897-b622-331bc943277f",
-            "created": "2018-12-15T09:59:07.978Z",
-            "modified": "2018-12-15T09:59:07.978Z",
+            "id": "relationship--b43b0d4a-303b-4f69-aa61-b29eb0d4095a",
+            "created": "2019-06-07T04:42:53.121Z",
+            "modified": "2019-06-07T04:42:53.121Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--5aa59f29-6bbe-4190-9a88-73d505159384",
-            "target_ref": "campaign--5919aaea-30b0-4d4c-b532-a652d43ed082"
+            "source_ref": "indicator--34e51391-9504-46b2-a04f-cd43f5e494e5",
+            "target_ref": "campaign--8d908688-dfa2-407a-b8f4-fff462469b88"
         },
         {
             "type": "indicator",
-            "id": "indicator--170d71e0-5664-4185-ae94-c835177040a4",
-            "created": "2018-12-15T10:59:07.000Z",
-            "modified": "2018-12-15T10:59:07.000Z",
+            "id": "indicator--d09e2b1b-a285-4f85-8cde-2227c36541f3",
+            "created": "2019-06-07T06:42:53.000Z",
+            "modified": "2019-06-07T06:42:53.000Z",
             "name": "Test - MD5",
             "description": "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it",
             "pattern": "[file:hashes.'MD5' = 'f583ca884c1d93458fb61ed137ff44f6'] OR [file:hashes.'MD5' = '3eb876507d4373f2ba589f9dde5982b9'] OR [file:hashes.'MD5' = '5ffaf3df68e0aa6d62e7f1158f2887ba']",
-            "valid_from": "2018-12-15T09:59:07.978374Z",
+            "valid_from": "2019-06-07T04:42:53.121768Z",
             "labels": [
                 "malicious-activity"
             ],
             "object_marking_refs": [
-                "marking-definition--ec7e9506-8a4b-4e50-9382-4d2ca6a8cba6"
+                "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
             ]
         },
         {
             "type": "relationship",
-            "id": "relationship--36eccabc-abce-4ead-817f-f0fec649c3fb",
-            "created": "2018-12-15T09:59:07.980Z",
-            "modified": "2018-12-15T09:59:07.980Z",
+            "id": "relationship--0c11cc40-de39-448a-a5d2-fa89cb16d7cb",
+            "created": "2019-06-07T04:42:53.124Z",
+            "modified": "2019-06-07T04:42:53.124Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--170d71e0-5664-4185-ae94-c835177040a4",
-            "target_ref": "campaign--5919aaea-30b0-4d4c-b532-a652d43ed082"
+            "source_ref": "indicator--d09e2b1b-a285-4f85-8cde-2227c36541f3",
+            "target_ref": "campaign--8d908688-dfa2-407a-b8f4-fff462469b88"
         },
         {
             "type": "indicator",
-            "id": "indicator--078378a5-6f05-4c40-b346-3ba3c8e89b6a",
-            "created": "2018-12-15T10:59:07.000Z",
-            "modified": "2018-12-15T10:59:07.000Z",
+            "id": "indicator--82c7f7c8-a875-4365-a824-1a8ea37b1046",
+            "created": "2019-06-07T06:42:53.000Z",
+            "modified": "2019-06-07T06:42:53.000Z",
             "name": "Test - SHA1",
             "description": "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it",
             "pattern": "[file:hashes.'SHA1' = '6753b7f8f0ddc71c97a47ba621952e3d9fef6bdd'] OR [file:hashes.'SHA1' = 'd3fa5d024b9119fa86435e0b909eaaa846fd182e'] OR [file:hashes.'SHA1' = 'e5f790a411b486a3a8acc87601c72e08e3cf586e']",
-            "valid_from": "2018-12-15T09:59:07.981123Z",
+            "valid_from": "2019-06-07T04:42:53.124333Z",
             "labels": [
                 "malicious-activity"
             ],
             "object_marking_refs": [
-                "marking-definition--ec7e9506-8a4b-4e50-9382-4d2ca6a8cba6"
+                "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
             ]
         },
         {
             "type": "relationship",
-            "id": "relationship--6006a6eb-1d4a-4630-928a-94bd4e5d99f3",
-            "created": "2018-12-15T09:59:07.983Z",
-            "modified": "2018-12-15T09:59:07.983Z",
+            "id": "relationship--08b219af-145e-46d8-9707-bd7f5ea322b2",
+            "created": "2019-06-07T04:42:53.126Z",
+            "modified": "2019-06-07T04:42:53.126Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--078378a5-6f05-4c40-b346-3ba3c8e89b6a",
-            "target_ref": "campaign--5919aaea-30b0-4d4c-b532-a652d43ed082"
+            "source_ref": "indicator--82c7f7c8-a875-4365-a824-1a8ea37b1046",
+            "target_ref": "campaign--8d908688-dfa2-407a-b8f4-fff462469b88"
         },
         {
             "type": "indicator",
-            "id": "indicator--3f4bef7d-9f4d-42d8-9592-fd1482c74843",
-            "created": "2018-12-15T10:59:07.000Z",
-            "modified": "2018-12-15T10:59:07.000Z",
+            "id": "indicator--6d01389e-5f19-4865-85dc-367a4f5ae243",
+            "created": "2019-06-07T06:42:53.000Z",
+            "modified": "2019-06-07T06:42:53.000Z",
             "name": "Test - DOMAINS",
             "description": "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it",
-            "pattern": "[domain-name:value = 'www.holzbock.biz'] OR [domain-name:value = 'hosting-ch.ch'] OR [domain-name:value = 'www.fliptray.biz']",
-            "valid_from": "2018-12-15T09:59:07.983421Z",
+            "pattern": "[domain-name:value = 'www.holzbock.biz'] OR [domain-name:value = 'hosting-ch.ch'] OR [domain-name:value = 'www.fliptray.biz'] OR [domain-name:value = '10.0.0.254']",
+            "valid_from": "2019-06-07T04:42:53.126481Z",
             "labels": [
                 "malicious-activity"
             ],
             "object_marking_refs": [
-                "marking-definition--ec7e9506-8a4b-4e50-9382-4d2ca6a8cba6"
+                "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
             ]
         },
         {
             "type": "relationship",
-            "id": "relationship--cce21e9a-98a5-4142-8517-fd9732b33ee0",
-            "created": "2018-12-15T09:59:07.988Z",
-            "modified": "2018-12-15T09:59:07.988Z",
+            "id": "relationship--12e924a4-06b9-44be-9489-379ebf6a8c45",
+            "created": "2019-06-07T04:42:53.130Z",
+            "modified": "2019-06-07T04:42:53.130Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--3f4bef7d-9f4d-42d8-9592-fd1482c74843",
-            "target_ref": "campaign--5919aaea-30b0-4d4c-b532-a652d43ed082"
+            "source_ref": "indicator--6d01389e-5f19-4865-85dc-367a4f5ae243",
+            "target_ref": "campaign--8d908688-dfa2-407a-b8f4-fff462469b88"
         },
         {
             "type": "indicator",
-            "id": "indicator--5c7acd83-d941-4e1f-86a2-e550cc69339c",
-            "created": "2018-12-15T10:59:07.000Z",
-            "modified": "2018-12-15T10:59:07.000Z",
+            "id": "indicator--c8468a90-21bb-4f2e-a603-241a99c723bf",
+            "created": "2019-06-07T06:42:53.000Z",
+            "modified": "2019-06-07T06:42:53.000Z",
             "name": "Test - URL",
             "description": "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it",
             "pattern": "[url:value = 'http://egorgerov3.temp.swtest.ru/index.php'] OR [url:value = 'http://supermainers.online/exp.exe'] OR [url:value = 'http://jdhftu.tk']",
-            "valid_from": "2018-12-15T09:59:07.988542Z",
+            "valid_from": "2019-06-07T04:42:53.131037Z",
             "labels": [
                 "malicious-activity"
             ],
             "object_marking_refs": [
-                "marking-definition--ec7e9506-8a4b-4e50-9382-4d2ca6a8cba6"
+                "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
             ]
         },
         {
             "type": "relationship",
-            "id": "relationship--5e5bd6b4-50ec-47cb-88f9-a971313e53dc",
-            "created": "2018-12-15T09:59:07.991Z",
-            "modified": "2018-12-15T09:59:07.991Z",
+            "id": "relationship--670bf532-10ca-40ea-9927-e56db4bb08c8",
+            "created": "2019-06-07T04:42:53.133Z",
+            "modified": "2019-06-07T04:42:53.133Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--5c7acd83-d941-4e1f-86a2-e550cc69339c",
-            "target_ref": "campaign--5919aaea-30b0-4d4c-b532-a652d43ed082"
+            "source_ref": "indicator--c8468a90-21bb-4f2e-a603-241a99c723bf",
+            "target_ref": "campaign--8d908688-dfa2-407a-b8f4-fff462469b88"
         },
         {
             "type": "indicator",
-            "id": "indicator--a306dd32-dbd0-4216-a7ad-5321748cf9b1",
-            "created": "2018-12-15T10:59:07.000Z",
-            "modified": "2018-12-15T10:59:07.000Z",
+            "id": "indicator--4bff10f7-8d56-4656-8107-289da02f5976",
+            "created": "2019-06-07T06:42:53.000Z",
+            "modified": "2019-06-07T06:42:53.000Z",
             "name": "Test - IPS",
             "description": "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it",
-            "pattern": "[ipv4-addr:value = '192.168.0.1'] OR [ipv4-addr:value = '10.0.0.254'] OR [ipv4-addr:value = '172.16.33.4']",
-            "valid_from": "2018-12-15T09:59:07.991492Z",
+            "pattern": "[ipv4-addr:value = '192.168.0.1'] OR [ipv4-addr:value = '172.16.33.4']",
+            "valid_from": "2019-06-07T04:42:53.13353Z",
             "labels": [
                 "malicious-activity"
             ],
             "object_marking_refs": [
-                "marking-definition--ec7e9506-8a4b-4e50-9382-4d2ca6a8cba6"
+                "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
             ]
         },
         {
             "type": "relationship",
-            "id": "relationship--3e2bebf5-e347-4cfb-a57c-5efa40a4c439",
-            "created": "2018-12-15T09:59:07.993Z",
-            "modified": "2018-12-15T09:59:07.993Z",
+            "id": "relationship--5e73d12c-f017-4a75-8cab-a6c59fc09ae2",
+            "created": "2019-06-07T04:42:53.135Z",
+            "modified": "2019-06-07T04:42:53.135Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--a306dd32-dbd0-4216-a7ad-5321748cf9b1",
-            "target_ref": "campaign--5919aaea-30b0-4d4c-b532-a652d43ed082"
+            "source_ref": "indicator--4bff10f7-8d56-4656-8107-289da02f5976",
+            "target_ref": "campaign--8d908688-dfa2-407a-b8f4-fff462469b88"
         },
         {
             "type": "indicator",
-            "id": "indicator--ee2d4353-83b8-411a-8400-36759689f15a",
-            "created": "2018-12-15T10:59:07.000Z",
-            "modified": "2018-12-15T10:59:07.000Z",
+            "id": "indicator--1ba6bfb0-0381-4335-9d6a-ad41c879a7f2",
+            "created": "2019-06-07T06:42:53.000Z",
+            "modified": "2019-06-07T06:42:53.000Z",
             "name": "Test - EMAILS",
             "description": "Cyber Saiyan - Test - https://infosharing.cybersaiyan.it",
             "pattern": "[email-message:from_ref.value = 'test@gio.com'] OR [email-message:from_ref.value = 'test2@fake.gio2.net'] OR [email-message:from_ref.value = 'test3@gio3.it']",
-            "valid_from": "2018-12-15T09:59:07.993935Z",
+            "valid_from": "2019-06-07T04:42:53.135216Z",
             "labels": [
                 "malicious-activity"
             ],
             "object_marking_refs": [
-                "marking-definition--ec7e9506-8a4b-4e50-9382-4d2ca6a8cba6"
+                "marking-definition--613f2e26-407d-48c7-9eca-b8e91df99dc9"
             ]
         },
         {
             "type": "relationship",
-            "id": "relationship--7ac2ed3a-6255-4ee0-902f-d2fcd1e83641",
-            "created": "2018-12-15T09:59:07.997Z",
-            "modified": "2018-12-15T09:59:07.997Z",
+            "id": "relationship--bec7c6e4-e906-41b6-8247-995cfd66e0e1",
+            "created": "2019-06-07T04:42:53.138Z",
+            "modified": "2019-06-07T04:42:53.138Z",
             "relationship_type": "indicates",
-            "source_ref": "indicator--ee2d4353-83b8-411a-8400-36759689f15a",
-            "target_ref": "campaign--5919aaea-30b0-4d4c-b532-a652d43ed082"
+            "source_ref": "indicator--1ba6bfb0-0381-4335-9d6a-ad41c879a7f2",
+            "target_ref": "campaign--8d908688-dfa2-407a-b8f4-fff462469b88"
         }
     ]
 }
-
