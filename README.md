@@ -17,10 +17,12 @@ Le componenti CONSUMER del servizio sono accessibili all'indirizzo https://infos
 * [STIX/TAXII](IoC-STIX_TAXII.md)
 * [TEXT](IoC-text.md)
 
-La cartella [CONTRIB](/CONTRIB/) contiene esempi di integrazione CONSUMER e PRODUCER in fase di test da parte della community.
-Di seguito i link a quanto prodotto
+La componente PRODUCER può essere alimentata 
+* da interfaccia web all'indirizzo [https://infosharing.cybersaiyan.it/producer/](https://infosharing.cybersaiyan.it/producer/) [TODO]
+* usando [lo script python](/CONTRIB/PRODUCER/scripts/) per generare i file STIX che poi devono essere caricati sulla rete (PUSH su servizio OpenTAXII)
+
+La cartella [CONTRIB](/CONTRIB/) contiene esempi di integrazione CONSUMER e PRODUCER in fase di test da parte della community
 * [CONSUMER/Graylog](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
-* [PRODUCER/Script per push su rete](/CONTRIB/PRODUCER/scripts/): script python per generare i file STIX (1.2 e 2) che devono poi essere inviati sulla rete per successiva redistribuzione ai CONSUMER
 * [PRODUCER/Yeti](/CONTRIB/PRODUCER/yeti): Export template per precompilare observable di yeti in formato utilizzabile con lo [script PRODUCER](/CONTRIB/PRODUCER/scripts/)
 
 ### Installazione
