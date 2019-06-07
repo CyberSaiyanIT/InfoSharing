@@ -127,9 +127,9 @@ def main(argv):
     handling.add_marking(marking_specification)
 
     wrapper.stix_header = STIXHeader(information_source=info_src,
-                                     title=TITLE.encode(encoding="UTF-8", errors="replace"),
-                                     description=DESCRIPTION.encode(encoding="UTF-8", errors="replace"),
-                                     short_description=SHORT.encode(encoding="UTF-8", errors="replace"))
+                                     title=TITLE,
+                                     description=DESCRIPTION,
+                                     short_description=SHORT)
     wrapper.stix_header.handling = handling
 
     # HASH indicators
