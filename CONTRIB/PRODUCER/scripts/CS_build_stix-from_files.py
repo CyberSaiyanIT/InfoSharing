@@ -4,8 +4,8 @@
 import sys
 import getopt
 import os.path
-import time
-import datetime
+
+from datetime import datetime
 import validators
 import re
 
@@ -105,7 +105,7 @@ def main(argv):
 
     ########################
     # Commond data
-    timestamp = datetime.datetime.fromtimestamp(time.time()).strftime("%Y-%m-%d %H:%M:%S")
+    timestamp = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
 
     ########################
     # Build STIX 1.2 file
