@@ -1,6 +1,17 @@
-Per poter recuperare gli IoC in formato STIX è possibile [installare il software Cabby](https://cabby.readthedocs.io/en/stable/installation.html)
+Gli IoC sono esportati in formato STIX 1.2 over TAXII 1.1.
 
-Qualsiasi altro software che supporti STIX 1.2 over TAXII può essere utilizzato per il collezionamento degli IoC
+Seguono gli esempi di collezionamento via Minemeld e Cabby
+
+# Minemeld
+Seguire la guida per la configurazione di Minemeld [disponibile a questo indirizzo](https://scubarda.com/2018/03/31/minemeld-threat-intelligence-automation-connect-to-an-taxii-service/)
+
+Utilizzare per la configurazione del miner ```taxiing.phishtank``` i seguenti parametri
+* _collection_: ```CS-COMMUNITY-TAXII```
+* _discovery_service_: ```https://infosharing.cybersaiyan.it/taxii-discovery-service```
+* _username_/_password_: NON IMPOSTARE, la connessione è non autenticata
+
+# Cabby
+[Installare il software Cabby](https://cabby.readthedocs.io/en/stable/installation.html)
 
 Di seguito la procedura testata su Ubuntu >=16.04
 ```
