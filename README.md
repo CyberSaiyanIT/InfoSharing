@@ -15,8 +15,8 @@ Di seguito è illustrata l'architettura implementata
 
 ## CONSUMER
 Le componenti CONSUMER del servizio sono accessibili in vari formati
-* [STIX/TAXII](IoC-STIX_TAXII.md)
-* [TESTO/CSV/JSON](IoC-text.md)
+* formato [STIX/TAXII](IoC-STIX_TAXII.md): formato STIX 1.2 over TAXII 1.1, IoC completi di informazioni di contesto (originatore, minaccia, descrizione)
+* formato [TESTO / CSV / JSON](IoC-text.md): IoC semplici, con informazioni di contesto rimosse e consumabili velocemente per detection (SIEM) e prevention (blocchi firewall)
 
 ## PRODUCER
 La componente PRODUCER può essere alimentata 
