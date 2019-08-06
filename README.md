@@ -13,10 +13,12 @@ Di seguito è illustrata l'architettura implementata
 
 ![l'architettura implementata](img/architettura.png)
 
-Le componenti CONSUMER del servizio sono accessibili all'indirizzo https://infosharing.cybersaiyan.it 
+## CONSUMER
+Le componenti CONSUMER del servizio sono accessibili in vari formati
 * [STIX/TAXII](IoC-STIX_TAXII.md)
-* [TEXT](IoC-text.md)
+* [TESTO/CSV/JSON](IoC-text.md)
 
+## PRODUCER
 La componente PRODUCER può essere alimentata 
 * da interfaccia web all'indirizzo [https://infosharing.cybersaiyan.it/producer/](https://infosharing.cybersaiyan.it/producer/) [TODO]
 * usando [lo script python](/CONTRIB/PRODUCER/scripts/) per generare i file STIX che poi devono essere caricati sulla rete (PUSH su servizio OpenTAXII)
