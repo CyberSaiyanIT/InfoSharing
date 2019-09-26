@@ -190,7 +190,7 @@ def main(argv):
         opts, args = getopt.getopt(argv, "ht:d:i:f:o:v")
     except getopt.GetoptError:
         print(
-            "CS_build_stix-from_files.py [-t TITLE] [-d DEMAILESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]")
+            "CS_build_stix-from_files.py [-t TITLE] [-d DESCRIPTION] [-i IDENTITY] [-f IOC_FILE] [-o STIX_FILES_PREFIX]")
         sys.exit(2)
 
     for opt, arg in opts:
