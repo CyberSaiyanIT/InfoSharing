@@ -3,7 +3,7 @@
 
 import sys
 import getopt
-import os.path
+import os
 
 from datetime import datetime
 import validators
@@ -28,21 +28,136 @@ from cybox.common import Hash
 from cybox.objects.file_object import File
 from cybox.objects.uri_object import URI
 from cybox.objects.address_object import Address
+from cybox.objects.address_object import EmailAddress
 from cybox.objects.email_message_object import EmailAddress
+
+from cybox.objects.email_message_object import EmailMessage
 
 import stix2
 
 
+def verifyhash(hashvalue, hashtype):
+    if hashtype == "sha256":
+        verify = re.findall(r"^[0-9a-f]{64}$", hashvalue, re.IGNORECASE)
+        if verify:
+            return True
+
+    if hashtype == "sha1":
+        verify = re.findall(r"^[0-9a-f]{40}$", hashvalue, re.IGNORECASE)
+        if verify:
+            return True
+
+    if hashtype == "md5":
+        verify = re.findall(r"^[0-9a-f]{32}$", hashvalue, re.IGNORECASE)
+        if verify:
+            return True
+
+    return False
+
+
 def loaddata(file_in):
     if os.path.exists(file_in) and os.path.getsize(file_in) > 0:
-        with open(file_in) as data_file:
-            try:
-                data = data_file.readlines()
-                return [x.strip() for x in data]
-            except:
-                return []
-    else:
-        return []
+
+        typeofdata = "null"
+
+        global listSHA256
+        listSHA256 = []
+
+        global listSHA1
+        listSHA1 = []
+
+        global listMD5
+        listMD5 = []
+
+        global listDOMAIN
+        listDOMAIN = []
+
+        global listURL
+        listURL = []
+
+        global listIP
+        listIP = []
+
+        global listEMAIL
+        listEMAIL = []
+
+        global listSUBJECT
+        listSUBJECT = []
+
+        f = open(file_in, "r", errors="ignore")
+
+        # Remove empty line
+        lines = filter(None, (line.rstrip() for line in f))
+
+        for line in lines:
+            if line:
+                if line.startswith("#"):
+                    continue
+
+                if line == "::SHA256::":
+                    typeofdata = "SHA256"
+                    continue
+
+                if line == "::SHA1::":
+                    typeofdata = "SHA1"
+                    continue
+
+                if line == "::MD5::":
+                    typeofdata = "MD5"
+                    continue
+
+                if line == "::DOMAIN::":
+                    typeofdata = "DOMAIN"
+                    continue
+
+                if line == "::URL::":
+                    typeofdata = "URL"
+                    continue
+
+                if line == "::IP::":
+                    typeofdata = "IP"
+                    continue
+
+                if line == "::EMAIL::":
+                    typeofdata = "EMAIL"
+                    continue
+
+                if line == "::SUBJECT::":
+                    typeofdata = "SUBJECT"
+                    continue
+
+                if typeofdata == "SHA256":
+                    if verifyhash(line, "sha256"):
+                        listSHA256.append(line)
+
+                if typeofdata == "SHA1":
+                    if verifyhash(line, "sha1"):
+                        listSHA1.append(line)
+
+                if typeofdata == "MD5":
+                    if verifyhash(line, "md5"):
+                        listMD5.append(line)
+
+                if typeofdata == "DOMAIN":
+                    if validators.domain(line):
+                        listDOMAIN.append(line)
+
+                if typeofdata == "URL":
+                    if validators.url(line):
+                        listURL.append(line)
+
+                if typeofdata == "IP":
+                    if validators.ipv4(line):
+                        listIP.append(line)
+
+                if typeofdata == "EMAIL":
+                    if validators.email(line):
+                        listEMAIL.append(line)
+
+                if typeofdata == "SUBJECT":
+                    listSUBJECT.append(line)
+
+        f.close()
 
 
 def main(argv):
@@ -183,128 +298,135 @@ def main(argv):
 
     ########################
     # Read IoC file
-    ioc = loaddata(IOCFILE)
+    loaddata(IOCFILE)
 
     if (VERBOSE): print("Reading IoC file " + IOCFILE + "...")
     ioccount = 0
-    for idx, ioc in enumerate(ioc):
-        notfound = 1
 
-        # sha256
-        p = re.compile(r"^[0-9a-f]{64}$", re.IGNORECASE)
-        m = p.match(ioc)
-        if m and notfound:
-            # STIX 1.2
-            filei = File()
-            filei.add_hash(Hash(ioc))
+    # sha256
+    for ioc in listSHA256:
+        # STIX 1.2
+        filei = File()
+        filei.add_hash(Hash(ioc))
 
-            obsi = Observable(filei)
-            indicatorHASH.add_observable(obsi)
-            if (VERBOSE): print("SHA256: " + ioc)
-            notfound = 0
-            ioccount += 1
+        obsi = Observable(filei)
+        indicatorHASH.add_observable(obsi)
+        if (VERBOSE): print("SHA256: " + ioc)
 
-            # STIX 2
-            pattern_sha256.append("[file:hashes.'SHA-256' = '" + ioc + "'] OR ")
+        ioccount += 1
 
-        # md5
-        p = re.compile(r"^[0-9a-f]{32}$", re.IGNORECASE)
-        m = p.match(ioc)
-        if m and notfound:
-            # STIX 1.2
-            filej = File()
-            filej.add_hash(Hash(ioc))
+        # STIX 2
+        pattern_sha256.append("[file:hashes.'SHA-256' = '" + ioc + "'] OR ")
 
-            obsj = Observable(filej)
-            indicatorHASH.add_observable(obsj)
-            if (VERBOSE): print("MD5: " + ioc)
-            notfound = 0
-            ioccount += 1
+    # md5
+    for ioc in listMD5:
+        # STIX 1.2
+        filej = File()
+        filej.add_hash(Hash(ioc))
 
-            # STIX 2
-            pattern_md5.append("[file:hashes.'MD5' = '" + ioc + "'] OR ")
+        obsj = Observable(filej)
+        indicatorHASH.add_observable(obsj)
+        if (VERBOSE): print("MD5: " + ioc)
 
-        # sha1
-        p = re.compile(r"^[0-9a-f]{40}$", re.IGNORECASE)
-        m = p.match(ioc)
-        if m and notfound:
-            # STIX 1.2
-            filek = File()
-            filek.add_hash(Hash(ioc))
+        ioccount += 1
 
-            obsk = Observable(filek)
-            indicatorHASH.add_observable(obsk)
-            if (VERBOSE): print("SHA1: " + ioc)
-            notfound = 0
-            ioccount += 1
+        # STIX 2
+        pattern_md5.append("[file:hashes.'MD5' = '" + ioc + "'] OR ")
 
-            # STIX 2
-            pattern_sha1.append("[file:hashes.'SHA1' = '" + ioc + "'] OR ")
+    # sha1
+    for ioc in listSHA1:
+        # STIX 1.2
+        filek = File()
+        filek.add_hash(Hash(ioc))
 
-        # domains
-        if validators.domain(ioc) and notfound:
-            # STIX 1.2
-            url = URI()
-            url.value = ioc
-            url.type_ = URI.TYPE_DOMAIN
-            url.condition = "Equals"
+        obsk = Observable(filek)
+        indicatorHASH.add_observable(obsk)
+        if (VERBOSE): print("SHA1: " + ioc)
 
-            obsu = Observable(url)
-            indiDOMAIN.add_observable(obsu)
-            if (VERBOSE): print("DOMAIN: " + ioc)
-            notfound = 0
-            ioccount += 1
+        ioccount += 1
 
-            # STIX 2
-            pattern_domain.append("[domain-name:value = '" + ioc + "'] OR ")
+        # STIX 2
+        pattern_sha1.append("[file:hashes.'SHA1' = '" + ioc + "'] OR ")
 
-        # url
-        if validators.url(ioc) and notfound:
-            # STIX 1.2
-            url = URI()
-            url.value = ioc
-            url.type_ = URI.TYPE_URL
-            url.condition = "Equals"
+    # domains
+    for ioc in listDOMAIN:
+        # STIX 1.2
+        url = URI()
+        url.value = ioc
+        url.type_ = URI.TYPE_DOMAIN
+        url.condition = "Equals"
 
-            obsu = Observable(url)
-            indiURL.add_observable(obsu)
-            if (VERBOSE): print("URL: " + ioc)
-            notfound = 0
-            ioccount += 1
+        obsu = Observable(url)
+        indiDOMAIN.add_observable(obsu)
+        if (VERBOSE): print("DOMAIN: " + ioc)
 
-            # STIX 2
-            pattern_url.append("[url:value = '" + ioc + "'] OR ")
+        ioccount += 1
 
-        # ip
-        if validators.ipv4(ioc) and notfound:
-            # STIX 1.2
-            ip = Address()
-            ip.address_value = ioc
+        # STIX 2
+        pattern_domain.append("[domain-name:value = '" + ioc + "'] OR ")
 
-            obsu = Observable(ip)
-            indiIP.add_observable(obsu)
-            if (VERBOSE): print("IP: " + ioc)
-            notfound = 0
-            ioccount += 1
+    # url
+    for ioc in listURL:
+        # STIX 1.2
+        url = URI()
+        url.value = ioc
+        url.type_ = URI.TYPE_URL
+        url.condition = "Equals"
 
-            # STIX 2
-            pattern_ip.append("[ipv4-addr:value = '" + ioc + "'] OR ")
+        obsu = Observable(url)
+        indiURL.add_observable(obsu)
+        if (VERBOSE): print("URL: " + ioc)
 
-        # email
-        if validators.email(ioc) and notfound:
-            # STIX 1.2
-            email = EmailAddress()
-            email.address_value = ioc
+        ioccount += 1
 
-            obsu = Observable(email)
-            indiEMAIL.add_observable(obsu)
+        # STIX 2
+        pattern_url.append("[url:value = '" + ioc + "'] OR ")
 
-            if (VERBOSE): print("Email: " + ioc)
-            notfound = 0
-            ioccount += 1
+    # ip
+    for ioc in listIP:
+        # STIX 1.2
+        ip = Address()
+        ip.address_value = ioc
 
-            # STIX 2
-            pattern_email.append("[email-message:from_ref.value = '" + ioc + "'] OR ")
+        obsu = Observable(ip)
+        indiIP.add_observable(obsu)
+        if (VERBOSE): print("IP: " + ioc)
+
+        ioccount += 1
+
+        # STIX 2
+        pattern_ip.append("[ipv4-addr:value = '" + ioc + "'] OR ")
+
+    # email
+    for ioc in listEMAIL:
+        # STIX 1.2
+        email = EmailAddress()
+        email.address_value = ioc
+
+        obsu = Observable(email)
+        indiEMAIL.add_observable(obsu)
+
+        if (VERBOSE): print("Email: " + ioc)
+        ioccount += 1
+
+        # STIX 2
+        pattern_email.append("[email-message:from_ref.value = '" + ioc + "'] OR ")
+
+    # subject
+    for ioc in listSUBJECT:
+        # STIX 1.2
+        emailsubject = EmailMessage()
+        emailsubject.subject = ioc
+
+        obsu = Observable(emailsubject)
+        indiEMAIL.add_observable(obsu)
+
+        if (VERBOSE): print("Subject: " + ioc)
+        ioccount += 1
+
+        # STIX 2 (http://docs.oasis-open.org/cti/stix/v2.0/stix-v2.0-part5-stix-patterning.html)
+        # Replace all quotes in a subject string with escaped quotes
+        pattern_email.append("[email-message:subject = '" + ioc.replace("'", "\\'") + "'] OR ")
 
     ########################
     # add all indicators to STIX 1.2

@@ -1,34 +1,41 @@
-SHA256
+# You can simply enter the IoC below, do not alter the structure.
+# The current IoC are examples and you can delete them.
+
+::SHA256::
 29b42b0ecd874bcad5a5d9d03ed8f8dee320892305312b4898a0b64f9fbde93a
 ef07905923461ce13a3ca18ef6eb1833a8c8d327d47e9cc8641a2ca3d5ce97f3
 a7ba2c9def86e54086f0624a73597865a90cb93aa72dec7fdf264f655cf1bb56
 
-SHA1 
+::SHA1::
 6753b7f8f0ddc71c97a47ba621952e3d9fef6bdd
 d3fa5d024b9119fa86435e0b909eaaa846fd182e
 e5f790a411b486a3a8acc87601c72e08e3cf586e
 
-MD5
+::MD5::
 f583ca884c1d93458fb61ed137ff44f6
 3eb876507d4373f2ba589f9dde5982b9
 5ffaf3df68e0aa6d62e7f1158f2887ba
 
-Dominio
+::DOMAIN::
 www.holzbock.biz
 hosting-ch.ch
 www.fliptray.biz
 
-URL
+::URL::
 http://egorgerov3.temp.swtest.ru/index.php
 http://supermainers.online/exp.exe
 http://jdhftu.tk
 
-EMAIL
+::IP::
+192.168.0.1
+10.0.0.254
+172.16.33.4
+
+::EMAIL::
 test@gio.com
 test2@fake.gio2.net
 test3@gio3.it
 
-IP
-192.168.0.1
-10.0.0.254
-172.16.33.4
+::SUBJECT::
+Fattura da revisionare
+Verifica documento
