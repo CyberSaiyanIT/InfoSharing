@@ -367,6 +367,9 @@ def main(argv):
 
     # url
     for ioc in listURL:
+        # Replace the ' char with %27
+        ioc = ioc.replace("'", "%27")
+        
         # STIX 1.2
         url = URI()
         url.value = ioc
