@@ -25,7 +25,11 @@ La componente PRODUCER può essere alimentata
 
 ## INTEGRAZIONE
 ### Consumer
-* [MISP](https://github.com/patriziotufarolo/cybersaiyan-taxii2misp): integrazione del feed nella piattaforma open source [TIP MISP](https://www.misp-project.org/), tks @patriziotufarolo
+* [MISP](https://github.com/patriziotufarolo/cybersaiyan-taxii2misp): integrazione del feed STIX nella piattaforma open source [TIP MISP](https://www.misp-project.org/), tks @patriziotufarolo
+* [MINEMELD](https://github.com/CyberSaiyanIT/InfoSharing/blob/master/README.md#integrazione): seguire le indicazioni del post per integrare il feed STIX in [Minemeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld); impostare i seguenti valori nel miner
+    * _collection_: ```CS-COMMUNITY-TAXII```
+    * _discovery_service_: ```https://infosharing.cybersaiyan.it/taxii-discovery-service```
+    * _username_/_password_: NON IMPOSTARE, la connessione è non autenticata
 * [GRAYLOG](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
 ### Producer
 * [YETI](/CONTRIB/PRODUCER/yeti): Export template per precompilare observable di yeti in formato utilizzabile con lo [script PRODUCER](/CONTRIB/PRODUCER/scripts/)
