@@ -25,10 +25,10 @@ La componente PRODUCER può essere alimentata
 
 ## INTEGRAZIONE
 ### Consumer
-* [MISP](CONTRIB/CONSUMER/MISP): integrazione del feed nella TIP [MISP](https://www.misp-project.org/)
-* [Graylog](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
+* [MISP](https://github.com/patriziotufarolo/cybersaiyan-taxii2misp): integrazione del feed nella piattaforma open source [TIP MISP](https://www.misp-project.org/), tks @patriziotufarolo
+* [GRAYLOG](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
 ### Producer
-* [Yeti](/CONTRIB/PRODUCER/yeti): Export template per precompilare observable di yeti in formato utilizzabile con lo [script PRODUCER](/CONTRIB/PRODUCER/scripts/)
+* [YETI](/CONTRIB/PRODUCER/yeti): Export template per precompilare observable di yeti in formato utilizzabile con lo [script PRODUCER](/CONTRIB/PRODUCER/scripts/)
 
 ## Installazione
 La guida all'installazione del server e del software di base è [disponibile qui](INSTALL/Server_software.md).
