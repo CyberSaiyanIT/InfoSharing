@@ -1,0 +1,3 @@
+[submodule "CONTRIB/CONSUMER/MISP"]
+	path = CONTRIB/CONSUMER/MISP
+	url = https://github.com/patriziotufarolo/cybersaiyan-taxii2misp
