@@ -23,15 +23,18 @@ La componente PRODUCER può essere alimentata
 * da interfaccia web all'indirizzo [https://infosharing.cybersaiyan.it/producer/](https://infosharing.cybersaiyan.it/producer/) [TODO]
 * usando [lo script python](/CONTRIB/PRODUCER/scripts/) per generare i file STIX che poi devono essere caricati sulla rete (PUSH su servizio OpenTAXII)
 
-La cartella [CONTRIB](/CONTRIB/) contiene esempi di integrazione CONSUMER e PRODUCER in fase di test da parte della community
-* [CONSUMER/Graylog](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
-* [PRODUCER/Yeti](/CONTRIB/PRODUCER/yeti): Export template per precompilare observable di yeti in formato utilizzabile con lo [script PRODUCER](/CONTRIB/PRODUCER/scripts/)
+## INTEGRAZIONE
+### Consumer
+* [MISP](CONTRIB/CONSUMER/MISP): integrazione del feed nella TIP [MISP](https://www.misp-project.org/)
+* [Graylog](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
+### Producer
+* [Yeti](/CONTRIB/PRODUCER/yeti): Export template per precompilare observable di yeti in formato utilizzabile con lo [script PRODUCER](/CONTRIB/PRODUCER/scripts/)
 
-### Installazione
+## Installazione
 La guida all'installazione del server e del software di base è [disponibile qui](INSTALL/Server_software.md).
 
 Le configurazioni dei software (OpenTAXII e Minemeld) saranno descritte in seguito [TODO].
 
-### Community
+## Community
 Il progetto è un'iniziativa volontaria portata avanti dalla community di Cyber Saiyan.
 E' stato creato un [gruppo Telegram](https://t.me/joinchat/Av4DDFjVkRC60YH_Lq-WVw) per coordinare l'evoluzione del progetto.
