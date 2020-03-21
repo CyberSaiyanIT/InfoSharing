@@ -1,14 +1,13 @@
-Gli IoC sono esportati in formato STIX 1.2 over TAXII 1.1.
+**Gli IoC sono esportati in formato STIX 1.2 over TAXII 1.1**
 
-Seguono gli esempi di collezionamento via Minemeld e Cabby
-
-# Minemeld
-Seguire la guida per la configurazione di Minemeld [disponibile a questo indirizzo](https://scubarda.com/2018/03/31/minemeld-threat-intelligence-automation-connect-to-an-taxii-service/)
-
-Utilizzare per la configurazione del miner ```taxiing.phishtank``` i seguenti parametri
+I parametri per la connessione sono i seguenti
 * _collection_: ```CS-COMMUNITY-TAXII```
 * _discovery_service_: ```https://infosharing.cybersaiyan.it/taxii-discovery-service```
-* _username_/_password_: NON IMPOSTARE, la connessione è non autenticata
+* _username_/_password_: NON IMPOSTARE, la connessione non è autenticata
+
+Per verificare il formato dei dati e la tassonomia utilizzata si consiglia di usare il software Cabby che consente di connettersi al feed e scaricare gli IoC
+
+Esempi di integrazione del feed con software che consentono l'automazione del collezionamento dati [sono diponibili qui](../README.md#consumer-1)
 
 # Cabby
 [Installare il software Cabby](https://cabby.readthedocs.io/en/stable/installation.html)
