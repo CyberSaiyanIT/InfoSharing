@@ -26,7 +26,7 @@ La componente PRODUCER può essere alimentata
 ## INTEGRAZIONE
 ### Consumer
 * [MISP](https://github.com/patriziotufarolo/cybersaiyan-taxii2misp): integrazione del feed STIX nella piattaforma open source [TIP MISP](https://www.misp-project.org/), tks @patriziotufarolo
-* [MINEMELD](https://github.com/CyberSaiyanIT/InfoSharing/blob/master/README.md#integrazione): seguire le indicazioni del post per integrare il feed STIX in [Minemeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld); impostare i seguenti valori nel miner
+* [MINEMELD](https://github.com/CyberSaiyanIT/InfoSharing/blob/master/README.md#integrazione): seguire le indicazioni del post per integrare il feed STIX in [Minemeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld); impostare i seguenti valori nel miner ```taxiing.phishtank```
     * _collection_: ```CS-COMMUNITY-TAXII```
     * _discovery_service_: ```https://infosharing.cybersaiyan.it/taxii-discovery-service```
     * _username_/_password_: NON IMPOSTARE, la connessione è non autenticata
