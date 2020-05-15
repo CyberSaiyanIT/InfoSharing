@@ -1,5 +1,5 @@
-**Gli IoC sono esportati in formato STIX 1.2 over TAXII 1.1**
 
+# STIX 1.2 over TAXII 1.1
 I parametri per la connessione sono i seguenti
 * _collection_: ```CS-COMMUNITY-TAXII```
 * _discovery_service_: ```https://infosharing.cybersaiyan.it/taxii-discovery-service```
@@ -9,7 +9,52 @@ Per verificare il formato dei dati e la tassonomia utilizzata si consiglia di us
 
 Esempi di integrazione del feed con software che consentono l'automazione del collezionamento dati [sono diponibili qui](/README.md#consumer-1)
 
-# Cabby
+### Formato di un generico IoC
+Di seguito un esempio di un generico file STIX. I campi principali che descrivono gli IoC sono 
+* _indicator:Title_ ==> questo deve definire univocamente la minaccia
+* _indicator:Description_ ==> descrizione della minaccia/indicatore
+* _indicator:Observable_ ==> in questa sezione sono specificati gli IoC (più di uno anche) associati alla minaccia
+
+```
+[...]
+    <stix:STIX_Header>
+        <stix:Title>Danabot-Gootkit</stix:Title>
+        <stix:Description>CERT-PA - Scoperti collegamenti tra Danabot e Gootkit - https://www.cert-pa.it/notizie/scoperti-collegamenti-tra-danabot-e-gootkit/</stix:Description>
+        <stix:Short_Description>2018-12-10 15:28:14</stix:Short_Description>
+        <stix:Handling>
+            <marking:Marking>
+                <marking:Controlled_Structure>//node() | //@*</marking:Controlled_Structure>
+                <marking:Marking_Structure xsi:type='tlpMarking:TLPMarkingStructureType' color="WHITE"/>
+            </marking:Marking>
+        </stix:Handling>
+        <stix:Information_Source>
+            <stixCommon:Identity>
+                <stixCommon:Name>CERT-PA via Cyber Saiyan Community</stixCommon:Name>
+            </stixCommon:Identity>
+        </stix:Information_Source>
+    </stix:STIX_Header>
+    <stix:Indicators>
+        <stix:Indicator id="CYBERSAIYAN:indicator-fd440022-2473-4a86-b76c-2927644c4498" timestamp="2018-12-10T14:28:14.748879+00:00" xsi:type='indicator:IndicatorType'>
+            <indicator:Title>Danabot-Gootkit - HASH</indicator:Title>
+            <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">File Hash Watchlist</indicator:Type>
+            <indicator:Observable id="CYBERSAIYAN:Observable-8578cec3-59ac-457b-a8de-319280513c0a">
+                <cybox:Observable_Composition operator="OR">
+                    <cybox:Observable id="CYBERSAIYAN:Observable-a7f2defd-f039-4922-8fce-59a10e1bdd46">
+                        <cybox:Object id="CYBERSAIYAN:File-db8800f7-4b8e-4ef3-b524-14e712a04b61">
+                            <cybox:Properties xsi:type="FileObj:FileObjectType">
+                                <FileObj:Hashes>
+                                    <cyboxCommon:Hash>
+                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
+                                        <cyboxCommon:Simple_Hash_Value>66c3a85ab2f34092fd15cf15e5c289cc70dd65bb86edf8308ca7b5ae1363abb5</cyboxCommon:Simple_Hash_Value>
+                                    </cyboxCommon:Hash>
+                                </FileObj:Hashes>
+                            </cybox:Properties>
+                        </cybox:Object>
+                    </cybox:Observable>
+[...]
+```
+
+## Cabby
 [Installare il software Cabby](https://cabby.readthedocs.io/en/stable/installation.html)
 
 Di seguito la procedura testata su Ubuntu >=16.04
@@ -101,50 +146,5 @@ taxii-poll --host infosharing.cybersaiyan.it --https --collection CS-COMMUNITY-T
 (cabby) gmellini@18-10:~$ taxii-poll --host infosharing.cybersaiyan.it --https --collection CS-COMMUNITY-TAXII --discovery /taxii-discovery-service
 [...]
 lista degli IoC in formato STIX 1.2 (XML)
-[...]
-```
-
-### Formato di un generico IoC
-Di seguito un esempio di un generico file STIX. I campi principali che descrivono gli IoC sono 
-* _indicator:Title_ ==> questo deve definire univocamente la minaccia
-* _indicator:Description_ ==> descrizione della minaccia/indicatore
-* _indicator:Observable_ ==> in questa sezione sono specificati gli IoC (più di uno anche) associati alla minaccia
-
-```
-[...]
-    <stix:STIX_Header>
-        <stix:Title>Danabot-Gootkit</stix:Title>
-        <stix:Description>CERT-PA - Scoperti collegamenti tra Danabot e Gootkit - https://www.cert-pa.it/notizie/scoperti-collegamenti-tra-danabot-e-gootkit/</stix:Description>
-        <stix:Short_Description>2018-12-10 15:28:14</stix:Short_Description>
-        <stix:Handling>
-            <marking:Marking>
-                <marking:Controlled_Structure>//node() | //@*</marking:Controlled_Structure>
-                <marking:Marking_Structure xsi:type='tlpMarking:TLPMarkingStructureType' color="WHITE"/>
-            </marking:Marking>
-        </stix:Handling>
-        <stix:Information_Source>
-            <stixCommon:Identity>
-                <stixCommon:Name>CERT-PA via Cyber Saiyan Community</stixCommon:Name>
-            </stixCommon:Identity>
-        </stix:Information_Source>
-    </stix:STIX_Header>
-    <stix:Indicators>
-        <stix:Indicator id="CYBERSAIYAN:indicator-fd440022-2473-4a86-b76c-2927644c4498" timestamp="2018-12-10T14:28:14.748879+00:00" xsi:type='indicator:IndicatorType'>
-            <indicator:Title>Danabot-Gootkit - HASH</indicator:Title>
-            <indicator:Type xsi:type="stixVocabs:IndicatorTypeVocab-1.1">File Hash Watchlist</indicator:Type>
-            <indicator:Observable id="CYBERSAIYAN:Observable-8578cec3-59ac-457b-a8de-319280513c0a">
-                <cybox:Observable_Composition operator="OR">
-                    <cybox:Observable id="CYBERSAIYAN:Observable-a7f2defd-f039-4922-8fce-59a10e1bdd46">
-                        <cybox:Object id="CYBERSAIYAN:File-db8800f7-4b8e-4ef3-b524-14e712a04b61">
-                            <cybox:Properties xsi:type="FileObj:FileObjectType">
-                                <FileObj:Hashes>
-                                    <cyboxCommon:Hash>
-                                        <cyboxCommon:Type xsi:type="cyboxVocabs:HashNameVocab-1.0">SHA256</cyboxCommon:Type>
-                                        <cyboxCommon:Simple_Hash_Value>66c3a85ab2f34092fd15cf15e5c289cc70dd65bb86edf8308ca7b5ae1363abb5</cyboxCommon:Simple_Hash_Value>
-                                    </cyboxCommon:Hash>
-                                </FileObj:Hashes>
-                            </cybox:Properties>
-                        </cybox:Object>
-                    </cybox:Observable>
 [...]
 ```
