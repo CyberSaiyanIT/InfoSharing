@@ -148,3 +148,15 @@ taxii-poll --host infosharing.cybersaiyan.it --https --collection CS-COMMUNITY-T
 lista degli IoC in formato STIX 1.2 (XML)
 [...]
 ```
+# STIX 2 over TAXII 2
+Il supporto STIX2/TAXII2 è ancora in fase sperimentale..
+
+Al momento sono disponibili le seguenti [collections TAXII2](https://infosharing.cybersaiyan.it/taxiing/v2/api/collections/)
+* _CS-COMMUNITY-HTTP_: lista completa degli IoC (id: 5233c422-6e7d-39a8-86f3-807c4170dae8)
+* _CS-PIHOLE_: IoC di tipo domain (id: 33d11abd-973f-3598-91a7-7dfc6d414104)
+* _CS-IP_: IoC di tipo ipv4 (id: e2610ab6-6edc-3a95-80ac-f74372e88d11)
+
+Per accedere agli _objects_ di ogni collection è necessario puntare la URL ```https://infosharing.cybersaiyan.it/taxiing/v2/api/collections/<collection_ID>/objects/```
+* [CS-COMMUNITY-HTTP](https://infosharing.cybersaiyan.it/taxiing/v2/api/collections/5233c422-6e7d-39a8-86f3-807c4170dae8/objects/)
+* [CS-PIHOLE](https://infosharing.cybersaiyan.it/taxiing/v2/api/collections/33d11abd-973f-3598-91a7-7dfc6d414104/objects/)
+* [CS-IP](https://infosharing.cybersaiyan.it/taxiing/v2/api/collections/e2610ab6-6edc-3a95-80ac-f74372e88d11/objects/)
