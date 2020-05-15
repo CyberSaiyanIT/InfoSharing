@@ -11,9 +11,9 @@ Oggi è implementata la seguente architettura che prevede due componenti distint
 
 ## Componente CONSUMER
 Gli indicatori sono accessibili in vari formati
-* formato [STIX/TAXII](IoC-STIX_TAXII.md)
-   * formato STIX 1.2 over TAXII 1.1: IoC completi di informazioni di contesto (originatore, minaccia e descrizione)
-   * formato STIX 2 over TAXII 2: IoC senza le informazioni di contesto
+* formato STIX/TAXII
+   * formato [STIX 1.2 over TAXII 1.1](IoC-STIX_TAXII.md#stix-12-over-taxii-11): IoC completi di informazioni di contesto (originatore, minaccia e descrizione)
+   * formato [STIX 2 over TAXII 2](IoC-STIX_TAXII.md#stix-2-over-taxii-2): IoC senza le informazioni di contesto
 * formato [TESTO / CSV / JSON](IoC-text.md): IoC senza le informazioni di contesto
 
 Qui di seguito alcuni esempi di integrazione
