@@ -25,9 +25,16 @@ Qui di seguito alcuni esempi di integrazione
 * [Come integrare GRAYLOG](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
 
 ## Componente PRODUCER
-La componente PRODUCER è alimentata **da utenti autorizzati**
-* dall'interfaccia web all'indirizzo [https://infosharing.cybersaiyan.it/producer/](https://infosharing.cybersaiyan.it/producer/) 
-* [generando i file STIX](/CONTRIB/PRODUCER/scripts/) che poi vanno caricati (PUSH) sul server OpenTAXII
+La componente PRODUCER è alimentata sia da utenti autorizzati che da script automatici che collezionano e caricano IoC.
+
+### Utenti
+Gli utenti autorizzati possono
+* caricare IoC dall'interfaccia web [https://infosharing.cybersaiyan.it/producer/](https://infosharing.cybersaiyan.it/producer/) 
+* [generare file STIX compatibili](/CONTRIB/PRODUCER/scripts/) che poi vanno caricati sul server OpenTAXII (PUSH autenticato)
+
+### Feed monitorati
+* [piattaforma InfoSec](https://infosec.cert-pa.it) dell'ex CERT-PA
+* IoC COVID-19 [messi a disposizione da Microsoft](https://www.microsoft.com/security/blog/2020/05/14/open-sourcing-covid-threat-intelligence/)
 
 ## Architettura
 La guida all'installazione del server e del software di base è [disponibile qui](INSTALL/Server_software.md).
