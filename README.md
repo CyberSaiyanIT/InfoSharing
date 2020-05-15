@@ -1,42 +1,34 @@
-# InfoSharing
-Questo repository traccia le attività del gruppo operativo per la sperimentazione di un meccanismo di Info Sharing della community [Cyber Saiyan](https://www.cybersaiyan.it)
+# Info Sharing
+Questo repository traccia le attività del gruppo operativo per la sperimentazione di un meccanismo di Info Sharing della community [Cyber Saiyan](https://www.cybersaiyan.it) avviato a Novembre 2018.
 
-Il gruppo è stato avviato a seguito di una web conf tenuta il giorno 8 Novembre 2018 il cui [resoconto è disponibile qui](https://docs.google.com/document/d/13PCWGlVvdOy226GXaWcnzkvl-7WfCyIUXTYGknrd9bg/edit).
+L'obiettivo è quello di creare una community italiana che funzioni da collettore di indicatori di compromissione (IoC) disponibili e condivisi da fonti autorevoli (GET di indicatori) e che al contempo possa contribuire con le proprie expertise all'arricchimento della rete di condivisione (PUSH indicatori sulla rete) o alla validazione degli indicatori.
 
-L'obiettivo è quello di creare una community italiana che funzioni da collettore degli indicatori "pregiati" già disponibili e condivisi da fonti autorevoli (get di indicatori) e al contempo possa contribuire con le proprie expertise all'arricchimento della rete di condivisione (push indicatori sulla rete).
-
-Di seguito l'architettura di COMMUNITY che si è implementata, che prevede due componenti distinte
-* la componente PRODUCER realizzata attraverso il software [OpenTAXII](http://www.opentaxii.org/en/stable/) su cui è stata configurata una collection denominata _community_ su cui è abilitato il PUSH autenticato di IoC in formato STIX 1.2
-* la componente CONSUMER realizzata attraverso il software [Minemeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld) che effettua periodicamente il POLL degli IoC dalla collection _community_ di OpenTAXII e "ribalta" tali indicatori su due feed distinti (testo e STIX/TAXII)
-
-Di seguito è illustrata l'architettura implementata
+Oggi è implementata la seguente architettura che prevede due componenti distinte
+* la componente PRODUCER: realizzata attraverso il software [OpenTAXII](http://www.opentaxii.org/en/stable/) su cui è stata configurata una collection denominata _community_ su cui è abilitato il PUSH autenticato di IoC in formato STIX 1.2
+* la componente CONSUMER: realizzata attraverso il software [Minemeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld) che effettua periodicamente il POLL degli IoC dalla collection _community_ di OpenTAXII e "ribalta" tali indicatori su due feed distinti (testo e STIX/TAXII)
 
 ![l'architettura implementata](img/architettura.png)
 
-## CONSUMER
-Le componenti CONSUMER del servizio sono accessibili in vari formati
-* formato [STIX/TAXII](IoC-STIX_TAXII.md): formato STIX 1.2 over TAXII 1.1, IoC completi di informazioni di contesto (originatore, minaccia, descrizione)
-* formato [TESTO / CSV / JSON](IoC-text.md): IoC semplici, con informazioni di contesto rimosse e consumabili velocemente per detection (SIEM) e prevention (blocchi firewall)
+## Componente CONSUMER
+Gli indicatori sono accessibili in vari formati
+* formato [STIX/TAXII](IoC-STIX_TAXII.md): formato STIX 1.2 over TAXII 1.1; in questo formato gli IoC sono completi di informazioni di contesto (originatore, minaccia e descrizione)
+* formato [TESTO / CSV / JSON](IoC-text.md): IoC _raw_ senza le informazioni di contesto
 
-## PRODUCER
-La componente PRODUCER può essere alimentata 
-* da interfaccia web all'indirizzo [https://infosharing.cybersaiyan.it/producer/](https://infosharing.cybersaiyan.it/producer/) [TODO]
-* usando [lo script python](/CONTRIB/PRODUCER/scripts/) per generare i file STIX che poi devono essere caricati sulla rete (PUSH su servizio OpenTAXII)
-
-## INTEGRAZIONE
-### Consumer
+Qui di seguito alcuni esempi di integrazione
 * [Come integrare MISP](https://github.com/patriziotufarolo/cybersaiyan-taxii2misp): integrazione del feed STIX nella piattaforma open source [TIP MISP](https://www.misp-project.org/), tks @patriziotufarolo
 * [Come integrare MINEMELD](https://scubarda.com/2018/03/31/minemeld-threat-intelligence-automation-connect-to-an-taxii-service/): seguire le indicazioni del post per integrare il feed STIX in [Minemeld](https://www.paloaltonetworks.com/products/secure-the-network/subscriptions/minemeld); impostare i seguenti valori nel miner ```taxiing.phishtank```
     * _collection_: ```CS-COMMUNITY-TAXII```
     * _discovery_service_: ```https://infosharing.cybersaiyan.it/taxii-discovery-service```
     * _username_/_password_: NON IMPOSTARE, la connessione è non autenticata
 * [Come integrare GRAYLOG](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
-### Producer
-* [YETI](/CONTRIB/PRODUCER/yeti): Export template per precompilare observable di yeti in formato utilizzabile con lo [script PRODUCER](/CONTRIB/PRODUCER/scripts/)
 
-## Installazione
+## Componente PRODUCER
+La componente PRODUCER può essere alimentata 
+* da interfaccia web all'indirizzo [https://infosharing.cybersaiyan.it/producer/](https://infosharing.cybersaiyan.it/producer/) [TODO]
+* usando [lo script python](/CONTRIB/PRODUCER/scripts/) per generare i file STIX che poi devono essere caricati sulla rete (PUSH su servizio OpenTAXII)
+
+## Architettura
 La guida all'installazione del server e del software di base è [disponibile qui](INSTALL/Server_software.md).
-
 Le configurazioni dei software (OpenTAXII e Minemeld) saranno descritte in seguito [TODO].
 
 ## Community
