@@ -9,9 +9,9 @@ Esempi di integrazione del feed con software che consentono l'automazione del co
 
 ### Formato di un generico IoC
 Di seguito un esempio di un generico file STIX. I campi principali che descrivono gli IoC sono 
-* _indicator:Title_ ==> questo deve definire univocamente la minaccia
-* _indicator:Description_ ==> descrizione della minaccia/indicatore
-* _indicator:Observable_ ==> in questa sezione sono specificati gli IoC (più di uno anche) associati alla minaccia
+* _stix:Title_ ==> questo deve definire univocamente la minaccia (es. Phishing, sLoad etc)
+* _stix:Description_ ==> descrizione della minaccia/indicatore composta da informazioni di contesto (es. URL piuttosto che una descrizione)
+* _stix:Information_Source_ ==> sorgente che ha generato l'informazione
 
 ```
 [...]
@@ -160,3 +160,5 @@ Per accedere agli _objects_ di ogni collection è necessario puntare la URL ```h
 * [CS-COMMUNITY-HTTP](https://infosharing.cybersaiyan.it/taxiing/v2/api/collections/5233c422-6e7d-39a8-86f3-807c4170dae8/objects/)
 * [CS-PIHOLE](https://infosharing.cybersaiyan.it/taxiing/v2/api/collections/33d11abd-973f-3598-91a7-7dfc6d414104/objects/)
 * [CS-IP](https://infosharing.cybersaiyan.it/taxiing/v2/api/collections/e2610ab6-6edc-3a95-80ac-f74372e88d11/objects/)
+
+NOTA: gli IoC in formato STIX2 non contengono le informazioni di contesto presenti in STIX1.2 (Title, Description, Information Source)
