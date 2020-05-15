@@ -11,8 +11,10 @@ Oggi è implementata la seguente architettura che prevede due componenti distint
 
 ## Componente CONSUMER
 Gli indicatori sono accessibili in vari formati
-* formato [STIX/TAXII](IoC-STIX_TAXII.md): formato STIX 1.2 over TAXII 1.1; in questo formato gli IoC sono completi di informazioni di contesto (originatore, minaccia e descrizione)
-* formato [TESTO / CSV / JSON](IoC-text.md): IoC _raw_ senza le informazioni di contesto
+* formato [STIX/TAXII](IoC-STIX_TAXII.md)
+   * formato STIX 1.2 over TAXII 1.1: IoC completi di informazioni di contesto (originatore, minaccia e descrizione)
+   * formato STIX 2 over TAXII 2: IoC senza le informazioni di contesto
+* formato [TESTO / CSV / JSON](IoC-text.md): IoC senza le informazioni di contesto
 
 Qui di seguito alcuni esempi di integrazione
 * [Come integrare MISP](https://github.com/patriziotufarolo/cybersaiyan-taxii2misp): integrazione del feed STIX nella piattaforma open source [TIP MISP](https://www.misp-project.org/), tks @patriziotufarolo
