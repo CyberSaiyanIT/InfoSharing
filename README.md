@@ -25,9 +25,9 @@ Qui di seguito alcuni esempi di integrazione
 * [Come integrare GRAYLOG](/CONTRIB/CONSUMER/Graylog/): integrazione del feed in [Graylog](https://www.graylog.org/)
 
 ## Componente PRODUCER
-La componente PRODUCER può essere alimentata 
-* da interfaccia web all'indirizzo [https://infosharing.cybersaiyan.it/producer/](https://infosharing.cybersaiyan.it/producer/) [TODO]
-* usando [lo script python](/CONTRIB/PRODUCER/scripts/) per generare i file STIX che poi devono essere caricati sulla rete (PUSH su servizio OpenTAXII)
+La componente PRODUCER è alimentata **da utenti autorizzati**
+* dall'interfaccia web all'indirizzo [https://infosharing.cybersaiyan.it/producer/](https://infosharing.cybersaiyan.it/producer/) 
+* [generando i file STIX](/CONTRIB/PRODUCER/scripts/) che poi vanno caricati (PUSH) sul server OpenTAXII
 
 ## Architettura
 La guida all'installazione del server e del software di base è [disponibile qui](INSTALL/Server_software.md).
