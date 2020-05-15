@@ -5,9 +5,7 @@ I parametri per la connessione sono i seguenti
 * _discovery_service_: ```https://infosharing.cybersaiyan.it/taxii-discovery-service```
 * _username_/_password_: NON IMPOSTARE, la connessione non è autenticata
 
-Per verificare il formato dei dati e la tassonomia utilizzata si consiglia di usare il software Cabby che consente di connettersi al feed e scaricare gli IoC
-
-Esempi di integrazione del feed con software che consentono l'automazione del collezionamento dati [sono diponibili qui](/README.md#consumer-1)
+Esempi di integrazione del feed con software che consentono l'automazione del collezionamento dati [sono diponibili qui](/README.md#componente-consumer)
 
 ### Formato di un generico IoC
 Di seguito un esempio di un generico file STIX. I campi principali che descrivono gli IoC sono 
@@ -55,6 +53,8 @@ Di seguito un esempio di un generico file STIX. I campi principali che descrivon
 ```
 
 ## Cabby
+Per verificare il formato dei dati e la tassonomia utilizzata si può usare il software Cabby che consente di connettersi al feed e scaricare gli IoC
+
 [Installare il software Cabby](https://cabby.readthedocs.io/en/stable/installation.html)
 
 Di seguito la procedura testata su Ubuntu >=16.04
