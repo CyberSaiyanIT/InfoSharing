@@ -36,6 +36,7 @@ Gli utenti autorizzati possono
 * [piattaforma InfoSec](https://infosec.cert-pa.it) dell'ex CERT-PA
 * IoC COVID-19 [messi a disposizione da Microsoft](https://www.microsoft.com/security/blog/2020/05/14/open-sourcing-covid-threat-intelligence/)
 * [URLhaus database dump](https://urlhaus.abuse.ch/downloads/csv_recent/) con URL degli ultimi 30 giorni, [questa](https://urlhaus.abuse.ch/api/) la pagina delle API di URLhaus
+* [Phishing Army](https://phishing.army/) phishing IoC tks to @drego85
 
 ## Architettura
 La guida all'installazione del server e del software di base è [disponibile qui](INSTALL/Server_software.md).
